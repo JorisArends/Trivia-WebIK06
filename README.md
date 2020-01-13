@@ -6,7 +6,7 @@ Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de q
 
 ## Schetsen
 
-![alt tekst](WebsiteDesign.png "Schetsen")
+![alt tekst](/doc/WebsiteDesign.png "Schetsen")
 
 ## Features
 ### De gebruiker kan:
