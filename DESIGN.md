@@ -25,7 +25,7 @@ Zoals een functie;
 - **Leaderboards** (Pagina waarin gebruiker categorie kan kiezen en het leaderboard word getoond)
 - **Quiz** (De pagina waarop de quiz is gestart, bij foutief antwoord naar Game Over pagina, bij goed antwoord nieuwe vraag, timer die afloopt per vraag en timer die gespeelde tijd bijhoud)
 - **Game Over** (Pagina met statistieken en een play again optie. Ook het scoreboard met de positie van de persoon die heeft gespeeld)
-- **About us** (Klein stukje text over project & studenten)
+- **About** (Klein stukje text over project & studenten)
 
 ## Plugins en frameworks
 - Bootstrap
