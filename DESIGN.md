@@ -20,7 +20,7 @@ Zoals een functie;
 
 ## Views
 
-** voeg foto toe met pijlen en game over een button voor play again**
+** voeg foto toe met pijlen en game over een button voor play again
 
 ### HTML Pages
 - **Layout** (Voor de standaard layout en design)
