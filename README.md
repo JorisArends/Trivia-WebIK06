@@ -7,6 +7,8 @@ Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de q
 ## Schetsen
 De schetsen worden nog toegevoegd als bijlage.
 
+![alt tekst](WebsiteDesign.png "Optionele titel")
+
 ## Features
 ### De gebruiker kan:
 1. **een naam invullen;**
@@ -43,4 +45,12 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 - Timing;
 - Oplopende moeilijkheid van vragen;
 - Live updaten.
+
+
+### Views
+
+Doen: maak een nieuwe schets van je applicatie, waarin alle schermen uitgetekend zijn. Het doel is om snel een goed overzicht van de hele applicatie te krijgen.
+Zorg dus dat je schermen die bij elkaar horen ook groepeert. En laat met pijlen zien als een knop doorlinkt naar een ander scherm.
+
+### Models/ helpers
 
