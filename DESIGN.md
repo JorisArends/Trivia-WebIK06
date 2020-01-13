@@ -19,6 +19,9 @@ Zoals een functie;
 - Om het scoreboard bij een bepaalde categorie te krijgen uit de database. [GET]
 
 ## Views
+
+** voeg foto toe met pijlen en game over een button voor play again**
+
 ### HTML Pages
 - **Layout** (Voor de standaard layout en design)
 - **Index** (Keuzemenu in een grid-vorm met de categorieën die men kan kiezen, zodra men kiest pop-up met username die mee wordt gestuurd naar Quiz)
