@@ -5,7 +5,8 @@
 Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Het is ook mogelijk om alle categorieën te kiezen voor een extra uitdaging. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
 
 ## Schetsen
-De schetsen worden nog toegevoegd als bijlage.
+
+![alt tekst](WebsiteDesign.png "Schetsen")
 
 ## Features
 ### De gebruiker kan:
@@ -43,4 +44,12 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 - Timing;
 - Oplopende moeilijkheid van vragen;
 - Live updaten.
+
+
+### Views
+
+Doen: maak een nieuwe schets van je applicatie, waarin alle schermen uitgetekend zijn. Het doel is om snel een goed overzicht van de hele applicatie te krijgen.
+Zorg dus dat je schermen die bij elkaar horen ook groepeert. En laat met pijlen zien als een knop doorlinkt naar een ander scherm.
+
+### Models/ helpers
 
