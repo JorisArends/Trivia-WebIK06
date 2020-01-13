@@ -19,7 +19,7 @@ Zoals een functie;
 - Om het scoreboard bij een bepaalde categorie te krijgen uit de database. [GET]
 
 ## Views
-** voeg foto toe met pijlen en game over een button voor play again **
+![alt tekst](/doc/Views.png "Schets met pijlen")
 
 ### HTML Pages
 - **Layout** (Voor de standaard layout en design)
