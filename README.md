@@ -5,9 +5,8 @@
 Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Het is ook mogelijk om alle categorieën te kiezen voor een extra uitdaging. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
 
 ## Schetsen
-De schetsen worden nog toegevoegd als bijlage.
 
-![alt tekst](WebsiteDesign.png "Optionele titel")
+![alt tekst](WebsiteDesign.png "Schetsen")
 
 ## Features
 ### De gebruiker kan:
