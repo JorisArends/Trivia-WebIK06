@@ -46,10 +46,4 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 - Live updaten.
 
 
-### Views
-
-Doen: maak een nieuwe schets van je applicatie, waarin alle schermen uitgetekend zijn. Het doel is om snel een goed overzicht van de hele applicatie te krijgen.
-Zorg dus dat je schermen die bij elkaar horen ook groepeert. En laat met pijlen zien als een knop doorlinkt naar een ander scherm.
-
-### Models/ helpers
 
