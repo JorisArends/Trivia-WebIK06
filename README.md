@@ -43,3 +43,4 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 - Timing;
 - Oplopende moeilijkheid van vragen;
 - Live updaten.
+
