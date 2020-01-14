@@ -37,17 +37,17 @@ def home():
     # Forget any user_id
     session.clear()
 
-    if request.method == "POST":
+    if request.method == "GET":
         return render_template("index.html")
     else:
 
         # Ensure username was submitted
-        if not request.args.get("username"):
+        if not request.form.get("username"):
             return jsonify(False)
 
         # Get session token once name is submitted
         session["user_id"] = get_token()
-        user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.args.get("username"), session["user_id"]))
+        user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
         conn.commit()
         return render_template("index.html")
 
