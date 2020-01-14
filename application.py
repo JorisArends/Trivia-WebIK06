@@ -7,6 +7,7 @@ import sqlite3
 
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
+from helpers import question
 
 # Configure application
 app = Flask(__name__)
@@ -71,5 +72,6 @@ def game_over():
 
 @app.route("/quiz")
 def quiz():
-    return render_template("quiz.html")
+    Q = question(1, 16, 'easy', '973e86c798ef24c7203bd15390e0e92af1303a3ea01daa93c0e08668a639f9a3') # Test voor API function
+    return render_template("quiz.html", Q = Q)
 
