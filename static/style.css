@@ -7,8 +7,9 @@
 }
 
 /* Increase the font size of the <h1> element */
-.header h1 {
+h1 {
   font-size: 40px;
+  text-align: center;
 }
 
 ul {
@@ -72,8 +73,30 @@ li a:hover {
   box-shadow: 0 4px 8px 0;
   /* rgba(0,0,0,0.2);*/
   /*transition: 0.3s;*/
-  width: 20%;
+  width: 320px;
   margin: 10px;
+}
+
+.col {
+  box-shadow: 0 4px 8px 0;
+  /* rgba(0,0,0,0.2);*/
+  /*transition: 0.3s;*/
+  margin: 10px;
+  padding-top: 10px;
+}
+
+select {
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	width: 200px;
+	height: 40px;
+	margin: 0;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	background-color: #fff;
 }
 
 
