@@ -5,6 +5,8 @@
 Alle routes die onze applicatie nodig heeft komen hier in.
 #### Routes
 - Sessions bijhouden om dubbele namen in scoreboard te voorkomen bij 2e poging.
+- Index; Toon alle categorieen in grid-vorm en vraag naar een username.
+- About; Toon de about us pagina. 
 - Quiz; om de volgende vragen door te sturen naar het javascript op de Quizpagina [POST?, GET]
 - Leaderboards; het leaderboard doorsturen naar de html pagina, nadat er een categorie is gekozen [POST, GET]
 - Game Over; Score moet in de database komen, en als de persoon een vorige slechtere score heeft, moet die eruit. [POST, GET]
