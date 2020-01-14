@@ -1,8 +1,8 @@
 /* layout.html */
 .header {
-  padding: 50px;
+  padding: 10px;
   text-align: center;
-  background: #ff9933;
+  background: #FFA500;
   color: white;
 }
 
@@ -13,35 +13,36 @@
 
 ul {
   list-style-type: none;
+  font-size: 18px;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  text-align: center;
 }
 
-li {
-  float: left;
+li  {
+  display: inline-block;
+  padding: 10px 16px;
+}
+
+li a {
+  color: white;
+  padding: 20px 30px;
 
 }
+
 a:link {
   text-decoration: none;
 }
-li a {
 
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 5px 20px;
 
-}
 
 li a:hover {
   background-color: #111;
 }
 
-.active {
-  background-color: #cc6600;
-}
+/* layout.html */
 
 * {
   box-sizing: border-box;
@@ -109,6 +110,7 @@ input[type=submit]:hover {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+  text-align: center;
 }
 
 .rows {
@@ -132,3 +134,4 @@ make the three columns stack on top of each other instead of next to each other 
     max-width: 100%;
   }
 }
+
