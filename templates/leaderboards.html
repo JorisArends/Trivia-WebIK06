@@ -5,7 +5,20 @@
 {% endblock %}
 
 {% block main %}
-
+    <form action="/leaderboards" method="post">
+            <select name="symbol">
+                <option disabled selected value="">Select category</option>
+                <option value="ID">General Knowledge</option>
+                <option value="ID">Science & Nature</option>
+                <option value="ID">Science: Computers</option>
+                <option value="ID">History</option>
+                <option value="ID">Geography</option>
+                <option value="ID">Entertainment: Film</option>
+                <option value="ID">Entertainment: Music</option>
+                <option value="ID">Entertainment: Video games</option>
+            </select>
+        <button class="btn btn-secondary" type="submit">Show</button></button>
+    </form>
 
 
 {% endblock %}

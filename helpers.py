@@ -8,19 +8,19 @@ def question(amount, category, difficulty, token):
     question_dict = dict()
     # Contact OpenTrivaDB API
     response = requests.get(f"https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()
-    print(f'{response}', file=sys.stderr)
+
 
     # ERROR: No Results Could not return results. The API doesn't have enough questions for your query.
     if response["response_code"] == 1:
-        jsonify(False)
+        jsonify(False) # TODO: Hier moet nog een error-code komen
 
     # ERROR: Invalid Parameter Contains an invalid parameter.
     elif response["response_code"] == 2:
-        jsonify(False)
+        jsonify(False) # TODO: Hier moet nog een error-code komen
 
     # ERROR: Token Not Found, Session Token does not exist or all avaiable questions have been asked.
     elif response["response_code"] == 3 or response["response_code"] == 4:
-        jsonify(False)
+        jsonify(False) # TODO: Hier moet nog een error-code komen
 
     else:
         question_dict["question"] = response["results"][0]["question"]
@@ -29,3 +29,8 @@ def question(amount, category, difficulty, token):
         print(f'{question_dict}', file=sys.stderr)
 
         return question_dict
+
+def get_token():
+    response = requests.get("https://opentdb.com/api_token.php?command=request").json()
+    token = response["token"]
+    return token
