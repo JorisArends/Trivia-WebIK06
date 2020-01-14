@@ -28,6 +28,7 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 ## Afhankelijkheden
 ### Databronnen
 - Trivia database met categorieën: https://opentdb.com/;
+- Categorieën gekozen met > 15 vragen:
 
 ### Externe componenten
 - Bootstrap 4;
