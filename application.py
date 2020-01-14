@@ -7,7 +7,7 @@ import sqlite3
 
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import question
+from helpers import question, get_token
 
 # Configure application
 app = Flask(__name__)
@@ -45,33 +45,30 @@ def home():
         if not request.form.get("username"):
             return jsonify(False)
 
-        user = db.execute("INSERT INTO users (username) VALUES(:username)", username=request.form.get("username"))
+        # Get session token once name is submitted
+        session["user_id"] = get_token()
+        user = db.execute("INSERT INTO users (username, token) VALUES(:username, :token)", username=request.form.get("username"), token=session["user_id"])
 
-        # Redirect user to login page
-        session["user_id"] = user
-
-        id = session["user_id"]
-
-        return render_template("index.html", id=id)
+        return render_template("index.html")
 
 
-@app.route("/leaderboards")
+@app.route("/leaderboards", methods=["GET", "POST"])
 def leaderboards():
     return render_template("leaderboards.html")
 
 
-@app.route("/about")
+@app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
 
 
-@app.route("/game_over")
+@app.route("/game_over", methods=["GET", "POST"])
 def game_over():
     return render_template("game_over.html")
 
 
-@app.route("/quiz")
+@app.route("/quiz", methods=["GET", "POST"])
 def quiz():
-    Q = question(1, 16, 'easy', '973e86c798ef24c7203bd15390e0e92af1303a3ea01daa93c0e08668a639f9a3') # Test voor API function
+    Q = question(1, 16, 'easy', get_token()) # Test voor API function
     return render_template("quiz.html", Q = Q)
 
