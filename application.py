@@ -21,5 +21,30 @@ Session(app)
 
 
 @app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/index")
 def index():
     return render_template("index.html")
+
+
+@app.route("/leaderboards")
+def leaderboards():
+    return render_template("leaderboards.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/game_over")
+def game_over():
+    return render_template("game_over.html")
+
+
+@app.route("/quiz")
+def quiz():
+    return render_template("quiz.html")
