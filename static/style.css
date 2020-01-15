@@ -49,6 +49,8 @@ li a:hover {
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 

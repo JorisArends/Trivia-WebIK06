@@ -32,5 +32,4 @@ def question(amount, category, difficulty, token):
 
 def get_token():
     response = requests.get("https://opentdb.com/api_token.php?command=request").json()
-    token = response["token"]
-    return token
+    return response["token"]
