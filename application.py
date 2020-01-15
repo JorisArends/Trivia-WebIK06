@@ -69,6 +69,6 @@ def game_over():
 
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
-    Q = question(1, 16, 'easy', get_token()) # Test voor API function
+    Q = question(1, 18, 'easy', get_token()) # Test voor API function
     return render_template("quiz.html", Q = Q)
 
