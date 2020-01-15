@@ -2,7 +2,8 @@
 
 const question = document.getElementById("question");
 const choices= Array.from(document.getElementsByClassName("choice-text"));
-
+const questionCounterText = document.getElementById("questionCounter");
+const scoreText = document.getElementById("score");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -103,6 +104,10 @@ getNewQuestion = () =>  {
     }
 
 	questionCounter++;
+	// update vraag counter
+	// ques...innerText = questionCounter + "/" + MAX_QUESTIONS;
+	questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
 	question.innerText = currentQuestion.question;
@@ -128,10 +133,16 @@ choices.forEach(choice => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
 
-		// console.log(selectedAnswer == currentQuestion.answer);
+
 		// antwoord correct/incorrect
+		//console.log(selectedAnswer == currentQuestion.answer);
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 		// console.log(classToApply);
+
+		// vraag correct, score omhoog
+		if (classToApply === "correct") {
+			incrementScore(CORRECT_BONUS);
+		}
 
     	selectedChoice.parentElement.classList.add(classToApply);
 
@@ -141,9 +152,14 @@ choices.forEach(choice => {
 	      getNewQuestion();
 	    }, 1000);
 
-
     });
 });
+
+// score omhoog functie
+incrementScore = num => {
+  score += num;
+  scoreText.innerText = score;
+};
 
 startGame();
 
