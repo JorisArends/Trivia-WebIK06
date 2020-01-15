@@ -72,3 +72,4 @@ def quiz():
     Q = question(1, 16, 'easy', get_token()) # Test voor API function
     return render_template("quiz.html", Q = Q)
 
+
