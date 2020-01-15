@@ -1,4 +1,4 @@
-/* layout.html */
+/* LAYOUT.HTML */
 .header {
   padding: 10px;
   text-align: center;
@@ -40,7 +40,7 @@ li a:hover {
   background-color: #111;
 }
 
-/* layout.html */
+/* INDEX.HTML*/
 
 /** {*/
 /*  box-sizing: border-box;*/
@@ -157,7 +157,7 @@ make the three columns stack on top of each other instead of next to each other 
 }
 
 
-/*quiz.html*/
+/* QUIZ.HTML*/
 .container_quiz {
   display: flex;
   justify-content: center;
@@ -165,6 +165,7 @@ make the three columns stack on top of each other instead of next to each other 
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
+  /*width: 100%;*/
 }
 
 /*#h2 {*/
@@ -174,9 +175,6 @@ make the three columns stack on top of each other instead of next to each other 
 
 /*}*/
 
-.container_quiz > * {
-  width: 100%;
-}
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -238,3 +236,93 @@ make the three columns stack on top of each other instead of next to each other 
   text-align: center;
   color: blue;
 }
+
+#progressBar {
+  width: 20rem;
+  height: 4rem;
+  border: 0.3rem solid #56a5eb;
+  margin-bottom: 1.5rem;
+}
+
+#progressBarFull {
+  height: 3.4rem;
+  background-color: #56a5eb;
+  width: 0%;
+}
+
+/* GAME_OVER.HTML*/
+
+.container_end {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+  /*width: 100%;*/
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid #56a5eb;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #56a5eb;
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* FORMS */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin-bottom: 1rem;
+  width: 20rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  border: none;
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+#finalScore {
+  font-size: 5.4rem;
+  color: #56a5eb;
+  margin-bottom: 5rem;
+}
+
+/*#finalScore > span {*/
+/*  font-size: 2.4rem;*/
+/*  font-weight: 500;*/
+/*}*/
+
