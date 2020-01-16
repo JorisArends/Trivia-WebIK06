@@ -318,7 +318,8 @@ input::placeholder {
 #finalScore {
   font-size: 5.4rem;
   color: #56a5eb;
-  margin-bottom: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /*#finalScore > span {*/
