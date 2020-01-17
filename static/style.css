@@ -241,18 +241,18 @@ make the three columns stack on top of each other instead of next to each other 
   color: blue;
 }
 
-#progressBar {
-  width: 20rem;
-  height: 4rem;
-  border: 0.3rem solid #56a5eb;
-  margin-bottom: 1.5rem;
-}
+/*#progressBar {*/
+/*  width: 20rem;*/
+/*  height: 4rem;*/
+/*  border: 0.3rem solid #56a5eb;*/
+/*  margin-bottom: 1.5rem;*/
+/*}*/
 
-#progressBarFull {
-  height: 3.4rem;
-  background-color: #56a5eb;
-  width: 0%;
-}
+/*#progressBarFull {*/
+/*  height: 3.4rem;*/
+/*  background-color: #56a5eb;*/
+/*  width: 0%;*/
+/*}*/
 
 /* GAME_OVER.HTML*/
 
@@ -273,26 +273,26 @@ make the three columns stack on top of each other instead of next to each other 
   align-items: center;
 }
 
-.btn {
+.btn_quiz {
   font-size: 1.8rem;
   padding: 1rem 0;
   width: 20rem;
   text-align: center;
-  border: 0.1rem solid #56a5eb;
+  border: 0.1rem solid #f0ad4e;
   margin-bottom: 1rem;
   text-decoration: none;
-  color: #56a5eb;
+  color: #f0ad4e;
   background-color: white;
 }
 
-.btn:hover {
+.btn_quiz:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
 }
 
-.btn[disabled]:hover {
+.btn_quiz[disabled]:hover {
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
@@ -321,7 +321,7 @@ input::placeholder {
 
 #finalScore {
   font-size: 5.4rem;
-  color: #56a5eb;
+  color: #f0ad4e;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }

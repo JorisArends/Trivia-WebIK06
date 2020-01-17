@@ -2,7 +2,7 @@
 
 const question = document.getElementById("question");
 const choices= Array.from(document.getElementsByClassName("choice-text"));
-const progressText = document.getElementById("progressText");
+// const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
 
@@ -10,7 +10,7 @@ let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
 // is dit nodig ?
-let questionCounter= 0;
+// let questionCounter= 0;
 let availableQuestions = [];
 
 let questions= [];
@@ -54,7 +54,7 @@ fetch(
 const CORRECT_BONUS = 10;
 
 // max vragen hebben wij niet
-const MAX_QUESTIONS= 3;
+const MAX_QUESTIONS= 10;
 
 
 startGame = ()  => {
@@ -77,13 +77,13 @@ getNewQuestion = () =>  {
 		return window.location.assign("/game_over");
     }
 
-	questionCounter++;
+	// questionCounter++;
 	// update vraag counter
 	// prog...innerText = questionCounter + "/" + MAX_QUESTIONS;
-	progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+	// progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
 
 	 //Update the progress bar
-	progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+	// progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
