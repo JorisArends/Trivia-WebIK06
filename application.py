@@ -54,7 +54,10 @@ def home():
 
 @app.route("/leaderboards", methods=["GET", "POST"])
 def leaderboards():
-    return render_template("leaderboards.html")
+    if request.method == "GET":
+        return render_template("leaderboards.html")
+    else:
+        return render_template("leaderboards.html")
 
 
 @app.route("/about", methods=["GET"])
