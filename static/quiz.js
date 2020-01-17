@@ -16,7 +16,7 @@ let availableQuestions = [];
 let questions= [];
 
 fetch(
-  "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+  "https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple"
 )
   .then(res => {
     return res.json();
@@ -50,16 +50,15 @@ fetch(
 
 
 // CONSTANTS
-// hoeveel punten je krijgt bij correct
-const CORRECT_BONUS = 10;
+// aantal vragen correct is een punt
+const punten_score = 1;
 
 // max vragen hebben wij niet
-const MAX_QUESTIONS= 10;
-
+// const MAX_QUESTIONS= 10;
 
 startGame = ()  => {
 	// beginquiz counter op 0
-	questionCounter = 0;
+	// questionCounter = 0;
 	score = 0;
 	// pak array questions en zet het in de array available
 	// full copy van questions
@@ -71,7 +70,8 @@ startGame = ()  => {
 getNewQuestion = () =>  {
 
 	// als er geen nieuwe vragen meer zijn
-    if(availableQuestions.length == 0 || questionCounter >= MAX_QUESTIONS){
+	// if ( ..... || questionCounter >= MAX_QUESTIONS)
+    if(availableQuestions.length == 0 ){
     	localStorage.setItem("mostRecentScore", score);
     	// GO TO GAME_OVER.HTML
 		return window.location.assign("/game_over");
@@ -118,7 +118,7 @@ choices.forEach(choice => {
 
 		// vraag correct, score omhoog
 		if (classToApply === "correct") {
-			incrementScore(CORRECT_BONUS);
+			incrementScore(punten_score);
 		}
 
     	selectedChoice.parentElement.classList.add(classToApply);
