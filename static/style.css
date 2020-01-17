@@ -77,6 +77,10 @@ li a:hover {
   width: 320px;
   margin: 10px;
 }
+.card:hover > #categorie{
+  background-color: #FFA500;
+}
+
 
 .col {
   box-shadow: 0 4px 8px 0;
