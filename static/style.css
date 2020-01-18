@@ -298,6 +298,7 @@ make the three columns stack on top of each other instead of next to each other 
   transform: none;
 }
 
+
 /* FORMS */
 form {
   width: 100%;
@@ -331,3 +332,14 @@ input::placeholder {
 /*  font-weight: 500;*/
 /*}*/
 
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 15px;
+  text-align: left;
+}
