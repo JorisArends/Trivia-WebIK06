@@ -57,7 +57,9 @@ def leaderboards():
     if request.method == "GET":
         return render_template("leaderboards.html")
     else:
-        return render_template("leaderboards.html")
+        categorie = request.form["categorie"]
+        scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
+        return render_template("leaderboards.html", scores = scores)
 
 
 @app.route("/about", methods=["GET"])
