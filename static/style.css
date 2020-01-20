@@ -169,15 +169,7 @@ make the three columns stack on top of each other instead of next to each other 
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
-  /*width: 100%;*/
 }
-
-/*#h2 {*/
-/*  font-size: 4.2rem;*/
-/*  margin-bottom: 4rem;*/
-/*  font-weight: 700;*/
-
-/*}*/
 
 .flex-column {
   display: flex;
@@ -214,15 +206,10 @@ make the three columns stack on top of each other instead of next to each other 
 .choice-text {
   padding: 1.5rem;
   margin: 0;
-  /*width: 100%;*/
 }
 
 .correct {
   background-color: green;
-}
-
-.incorrect {
-  background-color: red;
 }
 
 /* HUD */
@@ -241,19 +228,6 @@ make the three columns stack on top of each other instead of next to each other 
   font-size: 4rem;
   color:  #f0ad4e;
 }
-
-/*#progressBar {*/
-/*  width: 20rem;*/
-/*  height: 4rem;*/
-/*  border: 0.3rem solid #56a5eb;*/
-/*  margin-bottom: 1.5rem;*/
-/*}*/
-
-/*#progressBarFull {*/
-/*  height: 3.4rem;*/
-/*  background-color: #56a5eb;*/
-/*  width: 0%;*/
-/*}*/
 
 /* GAME_OVER.HTML*/
 
@@ -300,7 +274,6 @@ make the three columns stack on top of each other instead of next to each other 
   transform: none;
 }
 
-
 /* FORMS */
 form {
   width: 100%;
@@ -328,8 +301,6 @@ input::placeholder {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
-
 
 table {
   border-collapse: collapse;
