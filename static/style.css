@@ -18,8 +18,9 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #D2691E;
   text-align: center;
+  border: 0.1rem solid rgb(139,69,19);
 }
 
 li  {
@@ -30,6 +31,7 @@ li  {
 li a {
   color: white;
   padding: 20px 30px;
+  border: 0.1rem solid rgb(139,69,19);
 }
 
 a:link {
@@ -37,7 +39,12 @@ a:link {
 }
 
 li a:hover {
-  background-color: #111;
+  /*background-color: #111;*/
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(255,153,51,1);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
 }
 
 /* INDEX.HTML*/
@@ -77,8 +84,12 @@ li a:hover {
   width: 320px;
   margin: 10px;
 }
-.card:hover > #categorie{
-  background-color: #FFA500;
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(255,153,51,1);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
 }
 
 
@@ -142,6 +153,8 @@ select {
   text-align: center;
   height: 100%;
 }
+
+
 
 
 /* Responsive layout - when the screen is less than ..px wide,
@@ -268,11 +281,11 @@ make the three columns stack on top of each other instead of next to each other 
   color: #f0ad4e;
 }
 
-.btn_quiz[disabled]:hover {
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
+/*.btn_quiz[disabled]:hover {*/
+/*  cursor: not-allowed;*/
+/*  box-shadow: none;*/
+/*  transform: none;*/
+/*}*/
 
 /* FORMS */
 form {
@@ -282,18 +295,18 @@ form {
   align-items: center;
 }
 
-input {
-  margin-bottom: 1rem;
-  width: 20rem;
-  padding: 1.5rem;
-  font-size: 1.8rem;
-  border: none;
-  box-shadow: 0 0.1rem 1.4rem 0 rgba(255,153,51,1);
-}
+/*input {*/
+/*  margin-bottom: 1rem;*/
+/*  width: 20rem;*/
+/*  padding: 1.5rem;*/
+/*  font-size: 1.8rem;*/
+/*  border: none;*/
+/*  box-shadow: 0 0.1rem 1.4rem 0 rgba(255,153,51,1);*/
+/*}*/
 
-input::placeholder {
-  color: #aaa;
-}
+/*input::placeholder {*/
+/*  color: #aaa;*/
+/*}*/
 
 #finalScore {
   font-size: 5.4rem;
@@ -302,6 +315,7 @@ input::placeholder {
   margin-bottom: 1rem;
 }
 
+/* LEADERBOARDS.HTML */
 table {
   border-collapse: collapse;
   border: 1px solid black;
@@ -312,3 +326,4 @@ th, td {
   padding: 15px;
   text-align: left;
 }
+

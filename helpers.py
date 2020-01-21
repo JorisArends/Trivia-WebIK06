@@ -9,7 +9,6 @@ def question(amount, category, difficulty, token):
     # Contact OpenTrivaDB API
     response = requests.get(f"https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()
 
-
     # ERROR: No Results Could not return results. The API doesn't have enough questions for your query.
     if response["response_code"] == 1:
         jsonify(False) # TODO: Hier moet nog een error-code komen
@@ -30,6 +29,9 @@ def question(amount, category, difficulty, token):
 
         return question_dict
 
+
 def get_token():
     response = requests.get("https://opentdb.com/api_token.php?command=request").json()
     return response["token"]
+
+
