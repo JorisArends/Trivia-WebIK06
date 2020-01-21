@@ -54,13 +54,17 @@ def home():
 
 @app.route("/leaderboards", methods=["GET", "POST"])
 def leaderboards():
-    return render_template("leaderboards.html")
+    if request.method == "GET":
+        return render_template("leaderboards.html")
+    else:
+        categorie = request.form["categorie"]
+        scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
+        return render_template("leaderboards.html", scores = scores)
 
 
 @app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
-
 
 @app.route("/game_over", methods=["GET", "POST"])
 def game_over():
@@ -71,5 +75,3 @@ def game_over():
 def quiz():
     Q = question(1, 18, 'easy', get_token()) # Test voor API function
     return render_template("quiz.html", Q = Q)
-
-

@@ -5,22 +5,47 @@
 {% endblock %}
 
 {% block main %}
-    <br>
-    <center>
-        <form action="/leaderboards" method="post">
-                <select name="symbol">
-                    <option disabled selected value="">Select category</option>
-                    <option value="ID">General Knowledge</option>
-                    <option value="ID">Science & Nature</option>
-                    <option value="ID">Science: Computers</option>
-                    <option value="ID">History</option>
-                    <option value="ID">Geography</option>
-                    <option value="ID">Entertainment: Film</option>
-                    <option value="ID">Entertainment: Music</option>
-                    <option value="ID">Entertainment: Video games</option>
-                </select>
-            <button class="btn btn-secondary" type="submit">Show</button></button>
-        </form>
-    </center>
+<br>
+    <form action="/leaderboards" method="post">
+        <center>
+        <div class="input-group">
+            <select id="inputGroupSelect04", name = "categorie">
+                <option disabled selected value="">Select category</option>
+                <option value="general_knowledge">General Knowledge</option>
+                <option value="science&nature">Science & Nature</option>
+                <option value="science:computers">Science: Computers</option>
+                <option value="history">History</option>
+                <option value="geography">Geography</option>
+                <option value="film">Entertainment: Film</option>
+                <option value="music">Entertainment: Music</option>
+                <option value="video_games">Entertainment: Video games</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">Show</button>
+            </div>
+        </div>
+        </center>
+    </form>
+<br>
+<center>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Naam</th>
+        <th>Vragen goed</th>
+        <th>Tijd(mm:ss)</th>
+    </tr>
+    {% for score in scores %}
+        <tr>
+            <td>#</td>
+            <td>{{score[0]}}</td>
+            <td>{{score[1]}}</td>
+            <td>{{score[2]}}</td>
+        </tr>
+    {% endfor %}
+</table>
+</center>
+
+    <!-- TODO: table maken en CSS erbij maken -->
 
 {% endblock %}
