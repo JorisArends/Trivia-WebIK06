@@ -46,6 +46,7 @@ fetch(
     console.error(err);
   });
 
+
 // aantal vragen correct is een punt
 const punten_score = 1;
 
@@ -103,7 +104,7 @@ choices.forEach(choice => {
 			incrementScore(punten_score);
 		}
 
-		if (classToApply === "incorrect") {
+		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
 			return window.location.assign("/game_over");
 		}
@@ -123,7 +124,6 @@ incrementScore = num => {
   score += num;
   scoreText.innerText = score;
 };
-
 
 
 

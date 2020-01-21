@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block main %}
+
 <br>
-    <form action="/leaderboards" method="post">
+
+    <form action="/leaderboards" method="post" id="form">
         <center>
         <div class="input-group">
             <select id="inputGroupSelect04", name = "categorie">
-                <option disabled selected value="">Select category</option>
+                <option value="0">Select category</option>
                 <option value="general_knowledge">General Knowledge</option>
                 <option value="science&nature">Science & Nature</option>
                 <option value="science:computers">Science: Computers</option>
@@ -20,6 +22,11 @@
                 <option value="music">Entertainment: Music</option>
                 <option value="video_games">Entertainment: Video games</option>
             </select>
+            <select id="inputGroupSelect03", name = "hoeveelheid" style="width:60px">
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="submit">Show</button>
             </div>
@@ -28,24 +35,45 @@
     </form>
 <br>
 <center>
-<table>
-    <tr>
-        <th>#</th>
-        <th>Naam</th>
-        <th>Vragen goed</th>
-        <th>Tijd(mm:ss)</th>
-    </tr>
-    {% for score in scores %}
+    <table>
         <tr>
-            <td>#</td>
-            <td>{{score[0]}}</td>
-            <td>{{score[1]}}</td>
-            <td>{{score[2]}}</td>
+            {% for cell in tabel %}
+            <th>{{cell}}</th>
+            {% endfor %}
         </tr>
-    {% endfor %}
-</table>
-</center>
+        {% for score in scores %}
+            <tr>
+                <td>{{score["positie"]}}</td>
+                <td>{{score["naam"]}}</td>
+                <td>{{score["vragen"]}}</td>
+                <td>{{score["tijd"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </center>
+<br>
+<br>
 
-    <!-- TODO: table maken en CSS erbij maken -->
+<script>
 
+document.getElementById("form").addEventListener("submit", validate);
+
+        function validate(e) {
+
+            //get username from form
+            var option = document.getElementById("inputGroupSelect04").value;
+
+            //stop form from being submitted
+            e.preventDefault();
+
+            if(option === "0") {
+                alert("You haven't selected anything!");
+            }
+            else{
+                document.getElementById("form").submit();
+            }
+
+        }
+
+</script>
 {% endblock %}
