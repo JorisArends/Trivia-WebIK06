@@ -55,20 +55,42 @@
                         </div>
                     </div>
 
+    <!-- The Modal -->
+    <div class="modal" id="Popup" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Start quiz</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+
+          <div class="modal-body">
+            Username formulier
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
 <script>
     $(function(){
 
         $('.card').on('click', function() {
-
             // Get ID of clicked category
             var category = $(this).attr('id')
-            alert(category);
 
             // Open pop-up
-        });
-        // Open pop-up
+            $("#Popup").modal()
 
-        // Send username and category via GET to an route to start the quiz
+            // Send username and category via GET to an route to start the quiz
+
+        });
+
+
     });
 
 
