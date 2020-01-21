@@ -62,13 +62,14 @@ def leaderboards():
         return render_template("leaderboards.html")
     else:
         categorie = request.form["categorie"]
+        x = int(request.form["hoeveelheid"])
         scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
-        x = 1
+        i = 1
         for score in scores:
-            score["positie"] = x
-            x+=1
+            score["positie"] = i
+            i+=1
         tabel = ["#", "naam", "vragen goed", "tijd"]
-        return render_template("leaderboards.html", scores = scores[:10], tabel = tabel)
+        return render_template("leaderboards.html", scores = scores[:x], tabel = tabel)
 
 
 @app.route("/about", methods=["GET"])
