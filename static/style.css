@@ -66,13 +66,6 @@ li a:hover {
   background-color:white;
 }
 
-#categorie{
-  height: 15%;
-  position: absolute;
-  bottom: 0;
-
-}
-
 .card:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(255,153,51,1);

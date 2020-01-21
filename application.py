@@ -35,26 +35,11 @@ def index():
     return redirect("/")
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
-
     # Forget any user_id
     session.clear()
-
-    if request.method == "GET":
-        return render_template("index.html")
-    else:
-
-        # Ensure username was submitted
-        if not request.form.get("username"):
-            return jsonify(False)
-
-        # Get session token once name is submitted
-        session["user_id"] = get_token()
-        user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
-        #conn.commit()
-        return render_template("index.html")
-
+    return render_template("index.html")
 
 @app.route("/leaderboards", methods=["GET", "POST"])
 def leaderboards():
@@ -83,5 +68,16 @@ def game_over():
 
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
-    Q = question(1, 18, 'easy', get_token()) # Test voor API function
-    return render_template("quiz.html", Q = Q)
+    if request.method == "POST":
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return jsonify(False)
+
+        # Get session token once name is submitted
+        token = get_token()
+        session["user_id"] = token
+        user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
+        conn.commit()
+        return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"), token = token)
+    else:
+        return redirect("/")
