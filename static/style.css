@@ -20,7 +20,7 @@ ul {
   overflow: hidden;
   background-color: #D2691E;
   text-align: center;
-  border: 0.1rem solid rgb(139,69,19);
+  /*border: 0.1rem solid rgb(139,69,19);*/
 }
 
 li  {
@@ -31,7 +31,6 @@ li  {
 li a {
   color: white;
   padding: 20px 30px;
-  border: 0.1rem solid rgb(139,69,19);
 }
 
 a:link {
