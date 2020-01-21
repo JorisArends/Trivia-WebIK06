@@ -8,67 +8,88 @@
      <div class="row">
                     <div class="card" id=9>
                         <img src="/static/images/Clogos/GeneralKnowledge.png" alt="Categorie 9" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie1">
                             <h4><b>General Knowledge</b></h4>
                         </div>
                     </div>
 					<div class="card" id=17>
                         <img src="/static/images/Clogos/ScienceNature.png" alt="Categorie 17" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie2">
                             <h4><b>Science & Nature</b></h4>
                         </div>
                     </div>
 					<div class="card" id=18>
                         <img src="/static/images/Clogos/ComputerScience.png" alt="Categorie 18" style="width: 100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie3">
                             <h4><b>Science: Computers</b></h4>
                         </div>
                     </div>
 					<div class="card" id=23>
                         <img src="/static/images/Clogos/History.png" alt="Categorie 23" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie4">
                             <h4><b>History</b></h4>
                         </div>
                     </div>
 					<div class="card" id=22>
                         <img src="/static/images/Clogos/Geography.png" alt="Categorie 22" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie5">
                             <h4><b>Geography</b></h4>
                         </div>
                     </div>
 					<div class="card" id=11>
                         <img src="/static/images/Clogos/Film.png" alt="Categorie 11" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie6">
                             <h4><b>Film</b></h4>
                         </div>
                     </div>
 					<div class="card" id=12>
                         <img src="/static/images/Clogos/Music.png" alt="Categorie 12" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie7">
                             <h4><b>Music</b></h4>
                         </div>
                     </div>
 					<div class="card" id =15>
                         <img src="/static/images/Clogos/Videogames.jpg" alt="Categorie 15" style="width:100%">
-                        <div class="container" id="categorie">
+                        <div class="container" id="categorie8">
                             <h4><b>Video games</b></h4>
                         </div>
                     </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="Popup" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Start quiz</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+
+          <div class="modal-body">
+            Username formulier
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
 
 <script>
     $(function(){
 
         $('.card').on('click', function() {
-
             // Get ID of clicked category
             var category = $(this).attr('id')
-            alert(category);
+
 
             // Open pop-up
-        });
-        // Open pop-up
+            $("#Popup").modal()
 
-        // Send username and category via GET to an route to start the quiz
+            // Send username and category via GET to an route to start the quiz
+
+        });
     });
 
 

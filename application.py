@@ -75,7 +75,6 @@ def leaderboards():
 def about():
     return render_template("about.html")
 
-
 @app.route("/game_over", methods=["GET", "POST"])
 def game_over():
     return render_template("game_over.html")
@@ -85,5 +84,3 @@ def game_over():
 def quiz():
     Q = question(1, 18, 'easy', get_token()) # Test voor API function
     return render_template("quiz.html", Q = Q)
-
-

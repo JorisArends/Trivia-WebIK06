@@ -1,39 +1,37 @@
-// console.log("Hello,world!");
-
 const question = document.getElementById("question");
 const choices= Array.from(document.getElementsByClassName("choice-text"));
-// const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
-// const progressBarFull = document.getElementById("progressBarFull");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
-// is dit nodig ?
-// let questionCounter= 0;
+
 let availableQuestions = [];
 
 let questions= [];
 
+// .addEventListener("click", function(event) {
+// fetch(`/quiz?https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()`)
 fetch(
-  "https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple"
+"https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple"
 )
-  .then(res => {
-    return res.json();
+  .then(response => {
+    return response.json();
   })
-  .then(loadedQuestions => {
-    console.log(loadedQuestions.results);
-    questions = loadedQuestions.results.map(loadedQuestion => {
+
+  .then(json => {
+    console.log(json.results);
+    questions = json.results.map(json => {
       const formattedQuestion = {
-        question: loadedQuestion.question
+        question: json.question
       };
 
-      const answerChoices = [...loadedQuestion.incorrect_answers];
+      const answerChoices = [...json.incorrect_answers];
       formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
       answerChoices.splice(
         formattedQuestion.answer - 1,
         0,
-        loadedQuestion.correct_answer
+        json.correct_answer
       );
 
       answerChoices.forEach((choice, index) => {
@@ -48,17 +46,10 @@ fetch(
     console.error(err);
   });
 
-
-// CONSTANTS
 // aantal vragen correct is een punt
 const punten_score = 1;
 
-// max vragen hebben wij niet
-// const MAX_QUESTIONS= 10;
-
 startGame = ()  => {
-	// beginquiz counter op 0
-	// questionCounter = 0;
 	score = 0;
 	// pak array questions en zet het in de array available
 	// full copy van questions
@@ -70,20 +61,11 @@ startGame = ()  => {
 getNewQuestion = () =>  {
 
 	// als er geen nieuwe vragen meer zijn
-	// if ( ..... || questionCounter >= MAX_QUESTIONS)
-    if(availableQuestions.length == 0 ){
+    if(availableQuestions.length == 0) {
     	localStorage.setItem("mostRecentScore", score);
     	// GO TO GAME_OVER.HTML
 		return window.location.assign("/game_over");
     }
-
-	// questionCounter++;
-	// update vraag counter
-	// prog...innerText = questionCounter + "/" + MAX_QUESTIONS;
-	// progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
-
-	 //Update the progress bar
-	// progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
@@ -109,7 +91,7 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-
+        console.log(selectedChoice);
 
 		// antwoord correct/incorrect
 		//console.log(selectedAnswer == currentQuestion.answer);
@@ -121,6 +103,10 @@ choices.forEach(choice => {
 			incrementScore(punten_score);
 		}
 
+		if (classToApply === "incorrect") {
+			localStorage.setItem("mostRecentScore", score);
+			return window.location.assign("/game_over");
+		}
     	selectedChoice.parentElement.classList.add(classToApply);
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
