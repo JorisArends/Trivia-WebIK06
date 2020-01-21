@@ -77,8 +77,11 @@ li a:hover {
   width: 320px;
   margin: 10px;
 }
-.card:hover > #categorie{
-  background-color: #FFA500;
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(255,153,51,1);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
 }
 
 

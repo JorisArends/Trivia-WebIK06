@@ -26,7 +26,6 @@ def question(amount, category, difficulty, token):
         question_dict["question"] = response["results"][0]["question"]
         question_dict["correct_answer"] = [response["results"][0]["correct_answer"]]
         question_dict["possible_answers"] = response["results"][0]["incorrect_answers"]+question_dict["correct_answer"]
-        print(f'{question_dict}', file=sys.stderr)
 
         return question_dict
 

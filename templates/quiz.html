@@ -5,10 +5,9 @@
 {% endblock %}
 
 {% block main %}
-<p>{{ Q }}</p>  <!--Test om de API function te testen-->
 <div class= "container_quiz">
 	<div id= "game" class= "justify-center flex-column">
-
+<p>{{ username | tojson }} - {{ category | tojson }} - {{ token | tojson}}</p>
 		<div id= "hud">
 			<div id= "hud-item">
 				<p class= "hud-prefix"> <strong> Score </strong></p>
