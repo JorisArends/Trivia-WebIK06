@@ -3,7 +3,7 @@ from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
-import sqlite3
+#import sqlite3
 
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -22,8 +22,12 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Database connection
-conn = sqlite3.connect('trivia.db', check_same_thread=False)
-db = conn.cursor()
+#conn = sqlite3.connect('trivia.db', check_same_thread=False)
+#db = conn.cursor()
+
+
+# Configure CS50 Library to use SQLite database
+db = SQL("sqlite:///trivia.db")
 
 # Redirect homepage button to "/" route
 @app.route("/index")
@@ -48,7 +52,7 @@ def home():
         # Get session token once name is submitted
         session["user_id"] = get_token()
         user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
-        conn.commit()
+        #conn.commit()
         return render_template("index.html")
 
 
@@ -59,7 +63,12 @@ def leaderboards():
     else:
         categorie = request.form["categorie"]
         scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
-        return render_template("leaderboards.html", scores = scores)
+        x = 1
+        for score in scores:
+            score["positie"] = x
+            x+=1
+        tabel = ["#", "naam", "vragen goed", "tijd"]
+        return render_template("leaderboards.html", scores = scores[:10], tabel = tabel)
 
 
 @app.route("/about", methods=["GET"])
