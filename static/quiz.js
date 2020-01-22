@@ -124,6 +124,3 @@ incrementScore = num => {
   score += num;
   scoreText.innerText = score;
 };
-
-
-
