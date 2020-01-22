@@ -93,9 +93,10 @@ def insert_score():
     score = int(request.args.get('score'))
     category = request.args.get('category')
     prev_score = db.execute("SELECT * FROM scores WHERE naam = ? AND categorie = ?", (username, category))
+    print(prev_score)
     if not prev_score:
         print("NEW SCORE")
-        db.execute("INSERT INTO scores (naam, vragen, tijd, categorie) VALUES(?, ?, ?, ?);", (score, "00:00", username, category))
+        db.execute("INSERT INTO scores (naam, vragen, tijd, categorie) VALUES(?, ?, ?, ?);", (username, score, "00:00", category))
     else:
         if score > prev_score[0]["vragen"]:
             print("UPDATE")
