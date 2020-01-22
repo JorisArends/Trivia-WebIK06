@@ -20,7 +20,7 @@ fetch(
   })
 
   .then(json => {
-    console.log(json.results);
+    // console.log(json.results);
     questions = json.results.map(json => {
       const formattedQuestion = {
         question: json.question
@@ -33,7 +33,6 @@ fetch(
         0,
         json.correct_answer
       );
-
       answerChoices.forEach((choice, index) => {
         formattedQuestion["choice" + (index + 1)] = choice;
       });
@@ -71,7 +70,7 @@ getNewQuestion = () =>  {
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
 	question.innerText = currentQuestion.question;
-	// console.log(question);
+// 	console.log(question);
 
 	choices.forEach( choice => {
 	    const number = choice.dataset["number"];
@@ -92,12 +91,12 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-        console.log(selectedChoice);
+        // console.log(selectedChoice);
 
 		// antwoord correct/incorrect
 		//console.log(selectedAnswer == currentQuestion.answer);
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-		// console.log(classToApply);
+// 		console.log(classToApply);
 
 		// vraag correct, score omhoog
 		if (classToApply === "correct") {
@@ -109,6 +108,7 @@ choices.forEach(choice => {
 			return window.location.assign("/game_over");
 		}
     	selectedChoice.parentElement.classList.add(classToApply);
+
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {

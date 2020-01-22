@@ -190,6 +190,10 @@ make the three columns stack on top of each other instead of next to each other 
   background-color: green;
 }
 
+.incorrect {
+  background-color: red;
+}
+
 /* HUD */
 #hud {
   display: flex;
