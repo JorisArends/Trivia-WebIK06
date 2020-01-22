@@ -9,11 +9,11 @@ let score = 0;
 let availableQuestions = [];
 
 let questions= [];
-
+// let category = "{{ category }}";
 // .addEventListener("click", function(event) {
 // fetch(`/quiz?https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()`)
 fetch(
-"https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple"
+"https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple"
 )
   .then(response => {
     return response.json();
