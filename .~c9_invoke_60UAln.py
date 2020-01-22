@@ -59,11 +59,7 @@ def about():
 
 @app.route("/game_over", methods=["GET", "POST"])
 def game_over():
-    print("test")
-    #categorie = request.form["categorie"]
-    #scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
     return render_template("game_over.html")
-
 
 
 @app.route("/quiz", methods=["GET", "POST"])
@@ -85,19 +81,3 @@ def quiz():
 def name():
     category = request.args.get("category")
     return category_name(int(category))
-
-
-@app.route("/insert_score", methods=["GET", "POST"])
-def insert_score():
-    username = request.args.get('username')
-    score = int(request.args.get('score'))
-    category = request.args.get('category')
-    prev_score = db.execute("SELECT * FROM scores WHERE naam = ? AND categorie = ?", (username, category))
-    if not prev_score:
-        print("NEW SCORE")
-        db.execute("INSERT INTO scores (naam, vragen, tijd, categorie) VALUES(?, ?, ?, ?);", (score, "00:00", username, category))
-    else:
-        if score > prev_score[0]["vragen"]:
-            print("UPDATE")
-            db.execute("UPDATE scores SET vragen = ?, tijd = ? WHERE naam = ? AND categorie = ?", (score, "00:00", username, category))
-    return('', 204)

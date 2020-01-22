@@ -5,95 +5,97 @@
 {% endblock %}
 
 {% block main %}
-     <div class="row">
-                    <div class="card" id=9>
-                        <img src="/static/images/Clogos/GeneralKnowledge.png" alt="Categorie 9" style="width:100%">
-                        <div class="container" id="General knowledge">
-                            <h4><b>General Knowledge</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=17>
-                        <img src="/static/images/Clogos/ScienceNature.png" alt="Categorie 17" style="width:100%">
-                        <div class="container" id="Science & Nature">
-                            <h4><b>Science & Nature</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=18>
-                        <img src="/static/images/Clogos/ComputerScience.png" alt="Categorie 18" style="width: 100%">
-                        <div class="container" id="Science: Computers">
-                            <h4><b>Science: Computers</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=23>
-                        <img src="/static/images/Clogos/History.png" alt="Categorie 23" style="width:100%">
-                        <div class="container" id="History">
-                            <h4><b>History</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=22>
-                        <img src="/static/images/Clogos/Geography.png" alt="Categorie 22" style="width:100%">
-                        <div class="container" id="Geography">
-                            <h4><b>Geography</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=11>
-                        <img src="/static/images/Clogos/Film.png" alt="Categorie 11" style="width:100%">
-                        <div class="container" id="Film">
-                            <h4><b>Film</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id=12>
-                        <img src="/static/images/Clogos/Music.png" alt="Categorie 12" style="width:100%">
-                        <div class="container" id="Music">
-                            <h4><b>Music</b></h4>
-                        </div>
-                    </div>
-					<div class="card" id =15>
-                        <img src="/static/images/Clogos/Videogames.jpg" alt="Categorie 15" style="width:100%">
-                        <div class="container" id="Video Games">
-                            <h4><b>Video games</b></h4>
-                        </div>
-                    </div>
-
-    <!-- The Modal -->
-    <div class="modal" id="Popup" >
+<!-- The Modal -->
+    <div class="modal" id="Popup">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header">
-            <h4 class="modal-title">Start - <span id="cat">{Category}</span></h4>
+            <h4 class="modal-title">Start <span id="cat"></span></h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
 
           <div class="modal-body">
             <form action="/quiz" method="post" id="username">
-
+                <div class="form-group">
                     <input autocomplete="off" class="form-control" name="username" placeholder="Username" type="text">
                     <input type="hidden" name="category" value="" size ="40" />
+                </div>
+                <div class="form-group">
                 <button class="btn btn-primary" type="submit">Start quiz</button>
+                </div>
             </form>
           </div>
-
-
         </div>
       </div>
     </div>
 
+     <div class="row">
+        <div class="card" id=9>
+            <img src="/static/images/Clogos/GeneralKnowledge.png" alt="Categorie 9" style="width:100%">
+            <div class="container" id="General knowledge">
+                <h4><b>General Knowledge</b></h4>
+            </div>
+        </div>
+		<div class="card" id=17>
+            <img src="/static/images/Clogos/ScienceNature.png" alt="Categorie 17" style="width:100%">
+            <div class="container" id="Science & Nature">
+                <h4><b>Science & Nature</b></h4>
+            </div>
+        </div>
+		<div class="card" id=18>
+            <img src="/static/images/Clogos/ComputerScience.png" alt="Categorie 18" style="width: 100%">
+            <div class="container" id="Science: Computers">
+                <h4><b>Science: Computers</b></h4>
+            </div>
+        </div>
+		<div class="card" id=23>
+            <img src="/static/images/Clogos/History.png" alt="Categorie 23" style="width:100%">
+            <div class="container" id="History">
+                <h4><b>History</b></h4>
+            </div>
+        </div>
+		<div class="card" id=22>
+            <img src="/static/images/Clogos/Geography.png" alt="Categorie 22" style="width:100%">
+            <div class="container" id="Geography">
+                <h4><b>Geography</b></h4>
+            </div>
+        </div>
+		<div class="card" id=11>
+            <img src="/static/images/Clogos/Film.png" alt="Categorie 11" style="width:100%">
+            <div class="container" id="Film">
+                <h4><b>Film</b></h4>
+            </div>
+        </div>
+		<div class="card" id=12>
+            <img src="/static/images/Clogos/Music.png" alt="Categorie 12" style="width:100%">
+            <div class="container" id="Music">
+                <h4><b>Music</b></h4>
+            </div>
+        </div>
+		<div class="card" id =15>
+            <img src="/static/images/Clogos/Videogames.jpg" alt="Categorie 15" style="width:100%">
+            <div class="container" id="Video Games">
+                <h4><b>Video games</b></h4>
+            </div>
+        </div>
+    </div>
 <script>
     $(function(){
 
         $('.card').on('click', function() {
             // Get ID of clicked category
             var category = $(this).attr('id')
+            $.get('/name?category=' + category, function(data){
+            document.getElementById("cat").innerHT= data
+            });
             // Open pop-up
             $("#Popup").modal()
 
             // Send username and category POST to an route to start the quiz (via form)
             var form = document.forms['username'];
             form.category.value = category;
-
-            document.getElementById("cat").innerHTML = category
         });
     });
 

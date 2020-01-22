@@ -9,18 +9,18 @@ let score = 0;
 let availableQuestions = [];
 
 let questions= [];
-// let category = "{{ category }}";
+
 // .addEventListener("click", function(event) {
 // fetch(`/quiz?https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()`)
 fetch(
-"https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple"
+"https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple&token="+token+""
 )
   .then(response => {
     return response.json();
   })
 
   .then(json => {
-    console.log(json.results);
+    // console.log(json.results);
     questions = json.results.map(json => {
       const formattedQuestion = {
         question: json.question
@@ -33,7 +33,6 @@ fetch(
         0,
         json.correct_answer
       );
-
       answerChoices.forEach((choice, index) => {
         formattedQuestion["choice" + (index + 1)] = choice;
       });
@@ -71,7 +70,7 @@ getNewQuestion = () =>  {
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
 	question.innerText = currentQuestion.question;
-	// console.log(question);
+// 	console.log(question);
 
 	choices.forEach( choice => {
 	    const number = choice.dataset["number"];
@@ -86,18 +85,18 @@ getNewQuestion = () =>  {
 
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
-    	// console.log(e.target);
+    	console.log(e.target);
         if(!acceptingAnswers) return;
 
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-        console.log(selectedChoice);
+        // console.log(selectedChoice);
 
 		// antwoord correct/incorrect
 		//console.log(selectedAnswer == currentQuestion.answer);
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-		// console.log(classToApply);
+// 		console.log(classToApply);
 
 		// vraag correct, score omhoog
 		if (classToApply === "correct") {
@@ -110,6 +109,7 @@ choices.forEach(choice => {
 			return window.location.assign("/game_over");
 		}
     	selectedChoice.parentElement.classList.add(classToApply);
+
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
