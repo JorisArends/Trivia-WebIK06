@@ -20,7 +20,6 @@ ul {
   overflow: hidden;
   background-color: #D2691E;
   text-align: center;
-  /*border: 0.1rem solid rgb(139,69,19);*/
 }
 
 li  {
@@ -38,7 +37,6 @@ a:link {
 }
 
 li a:hover {
-  /*background-color: #111;*/
   color: white;
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(255,153,51,1);
@@ -48,30 +46,12 @@ li a:hover {
 
 /* INDEX.HTML*/
 
-/** {*/
-/*  box-sizing: border-box;*/
-/*}*/
-
 .row {
   display: flex;
   flex-wrap: wrap;
   margin-left: 0px;
   margin-right: 0px;
 }
-
-
-/*.left {*/
-/*  flex: 80%;*/
-/*  background-color: #e6e6e6;*/
-/*  padding: 20px;*/
-/*}*/
-
-
-/*.right {*/
-/*  flex: 20%;*/
-/*  background-color: #f2f2f2;*/
-/*  padding: 20px;*/
-/*}*/
 
 .main {
   background-color: white;
@@ -116,31 +96,6 @@ select {
 	background-color: #fff;
 }
 
-
-/*input[type=text], select, textarea {*/
-  /* width: 100%; /* Full width
-  padding: 12px; /* Some padding
-  border: 1px solid #ccc; /* Gray border
-  border-radius: 4px; /* Rounded borders
-  box-sizing: border-box; /* Make sure that padding and width stays in place
-  margin-top: 6px; /* Add a top margin
-  margin-bottom: 20px; /* Bottom margin
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally)
-/*}*/
-
-/*input[type=submit] {*/
-/*  background-color: #4CAF50;*/
-/*  color: white;*/
-/*  padding: 12px 20px;*/
-/*  border: none;*/
-/*  border-radius: 4px;*/
-/*  cursor: pointer;*/
-/*}*/
-
-/*input[type=submit]:hover {*/
-/*  background-color: #45a049;*/
-/*}*/
-
 .row {
   display: flex;
   justify-content: center;
@@ -165,8 +120,6 @@ select {
   bottom: 0;
   width:100%;
 }
-
-
 
 
 /* Responsive layout - when the screen is less than ..px wide,
@@ -240,7 +193,6 @@ make the three columns stack on top of each other instead of next to each other 
 /* HUD */
 #hud {
   display: flex;
-  /*justify-content: space-between;*/
 }
 
 .hud-prefix {
@@ -265,7 +217,6 @@ make the three columns stack on top of each other instead of next to each other 
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
-  /*width: 100%;*/
 }
 
 /*.flex-center {*/
@@ -307,18 +258,6 @@ form {
   align-items: center;
 }
 
-/*input {*/
-/*  margin-bottom: 1rem;*/
-/*  width: 20rem;*/
-/*  padding: 1.5rem;*/
-/*  font-size: 1.8rem;*/
-/*  border: none;*/
-/*  box-shadow: 0 0.1rem 1.4rem 0 rgba(255,153,51,1);*/
-/*}*/
-
-/*input::placeholder {*/
-/*  color: #aaa;*/
-/*}*/
 
 #finalScore {
   font-size: 5.4rem;
@@ -341,6 +280,7 @@ th, td {
 
 tr:hover {
   background-color: #f5f5f5;
-
 }
+
+
 
