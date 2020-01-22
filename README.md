@@ -4,6 +4,10 @@
 ## Samenvatting
 Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Het is ook mogelijk om alle categorieën te kiezen voor een extra uitdaging. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
 
+## Prototype (22-01-2020)
+Gebruiker kan een categorie kiezen en zijn naam invullen, deze worden meegestuurd naar de quizpagina, waarna de quizvragen worden opgehaald. Het is nog niet gelukt om de tijd bij te houden en de vragen in moeilijkheid op te laten lopen. Dit waren geen MVP's maar zouden we graag nog willen implementeren. Wel hebben we de categorieen kiezen en het tonen van een nieuwe vraag zonder refresh weten te implementeren. Ook de scoreboarden per categorie zijn werkend, en zodra iemand zijn score verbeterd dan wordt de oude entry in de database geupdate, hierdoor blijf het aantal dubbele namen beperkt. De shortcut optie voor een play again in dezelfde categorie moet nog worden gemaakt en de username popup form heeft nog wat kleine bugs, net als de klikbare antwoorden. 
+
+
 ## Schetsen
 
 ![alt tekst](/doc/WebsiteDesign.png "Schetsen")
