@@ -63,8 +63,8 @@ getNewQuestion = () =>  {
 
 	// als er geen nieuwe vragen meer zijn
     if(availableQuestions.length == 0) {
-    	localStorage.setItem("mostRecentScore", score);
-    	// GO TO GAME_OVER.HTML
+        // GO TO GAME_OVER.HTML
+
 		return window.location.assign("/game_over");
     }
 
@@ -106,6 +106,7 @@ choices.forEach(choice => {
 
 		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
+			$.get('/insert_score',{username: username, score: score, category: category});
 			return window.location.assign("/game_over");
 		}
     	selectedChoice.parentElement.classList.add(classToApply);

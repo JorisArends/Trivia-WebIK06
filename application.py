@@ -63,7 +63,11 @@ def about():
 
 @app.route("/game_over", methods=["GET", "POST"])
 def game_over():
+    print("test")
+    #categorie = request.form["categorie"]
+    #scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
     return render_template("game_over.html")
+
 
 
 @app.route("/quiz", methods=["GET", "POST"])
@@ -77,10 +81,21 @@ def quiz():
         token = get_token()
         session["user_id"] = token
         user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
-<<<<<<< HEAD
-        #conn.commit()
-=======
->>>>>>> e8ba882d4035df5aad26983c0e9ff62e017c6988
         return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"), token = token)
     else:
         return redirect("/")
+
+@app.route("/insert_score", methods=["GET", "POST"])
+def insert_score():
+    username = request.args.get('username')
+    score = int(request.args.get('score'))
+    category = request.args.get('category')
+    prev_score = db.execute("SELECT * FROM scores WHERE naam = ? AND categorie = ?", (username, category))
+    if not prev_score:
+        print("NEW SCORE")
+        db.execute("INSERT INTO scores (naam, vragen, tijd, categorie) VALUES(?, ?, ?, ?);", (score, "00:00", username, category))
+    else:
+        if score > prev_score[0]["vragen"]:
+            print("UPDATE")
+            db.execute("UPDATE scores SET vragen = ?, tijd = ? WHERE naam = ? AND categorie = ?", (score, "00:00", username, category))
+    return('', 204)
