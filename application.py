@@ -77,7 +77,7 @@ def quiz():
         token = get_token()
         session["user_id"] = token
         user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
-        conn.commit()
+        #conn.commit()
         return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"), token = token)
     else:
         return redirect("/")
