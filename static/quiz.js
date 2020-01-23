@@ -108,8 +108,8 @@ choices.forEach(choice => {
 
 		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
-			$.get('/insert_score',{username: username, score: score, category: category});
-		// 	return window.location.assign("/game_over");
+			$.get('/insert_score',{username: username, score: score, category: category, time: time});
+		 	return window.location.assign("/game_over");
 		}
 		if ($(e.target).hasClass('choice-container')) {
 		  selectedChoice.classList.add(classToApply);
@@ -145,3 +145,24 @@ var decodeHTML = function (html) {
 	txt.innerHTML = html;
 	return txt.value;
 };
+
+
+
+let count = 0;
+let intervalRef = null;
+
+intervalRef = setInterval(_ => {
+  count+=10;
+
+  let s = Math.floor((count /  1000)) % 60;
+  let m = Math.floor((count / 60000)) % 60;
+  if(m<10){
+  	m = "0"+ m;
+  }
+  if(s<10){
+  	s = "0" + s;
+  }
+	time = m + ":" + s
+  $('#timer').text(time);
+}, 10);
+
