@@ -87,15 +87,14 @@ getNewQuestion = () =>  {
 };
 
 choices.forEach(choice => {
-    choice.parentElement.addEventListener("click", e => {
-    	console.log(e.target);
-        if(!acceptingAnswers) return;
+  choice.parentElement.addEventListener("click", e => {
+    console.log(e.target);
+    if(!acceptingAnswers) return;
 
-        acceptingAnswers = false;
+    acceptingAnswers = false;
 
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset["number"];
-        console.log(selectedChoice);
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
 
 		// antwoord correct/incorrect
 		//console.log(selectedAnswer == currentQuestion.answer);
@@ -149,7 +148,7 @@ var decodeHTML = function (html) {
 };
 
 
-  // Countdown timer per question of 10 seconds
+// Countdown timer per question of 10 seconds
 function countdown() {
   var timeleft = 10;
   var counter = 0;
