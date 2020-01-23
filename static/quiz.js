@@ -112,7 +112,6 @@ choices.forEach(choice => {
 		}
     	selectedChoice.parentElement.classList.add(classToApply);
 
-
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
 	      selectedChoice.parentElement.classList.remove(classToApply);
