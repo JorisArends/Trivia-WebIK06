@@ -39,17 +39,26 @@ def home():
 
 @app.route("/leaderboards", methods=["GET", "POST"])
 def leaderboards():
+    #if method is get, show page without table
     if request.method == "GET":
         return render_template("leaderboards.html")
     else:
+        #get category from form
         categorie = request.form["categorie"]
+        #get size of table from form
         x = int(request.form["hoeveelheid"])
+        #get values from a category from the database, and sort them
         scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
+
+        #give all entries for leaderboard the correct ranking
         i = 1
         for score in scores:
             score["positie"] = i
             i+=1
+
+        #values for the header of the table(this way, the values dont get printed if method is GET)
         tabel = ["#", "naam", "vragen goed", "tijd"]
+
         return render_template("leaderboards.html", scores = scores[:x], tabel = tabel)
 
 
