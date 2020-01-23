@@ -20,7 +20,7 @@ fetch(
   })
 
   .then(json => {
-    // console.log(json.results);
+    console.log(json.results);
     questions = json.results.map(json => {
       const formattedQuestion = {
         question: json.question
@@ -56,6 +56,7 @@ startGame = ()  => {
 	availableQuestions = [ ... questions];
 	// console.log(availableQuestions);
 	getNewQuestion();
+	countdown();
 };
 
 getNewQuestion = () =>  {
@@ -109,7 +110,7 @@ choices.forEach(choice => {
 		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category});
-		// 	return window.location.assign("/game_over");
+			return window.location.assign("/game_over");
 		}
 		if ($(e.target).hasClass('choice-container')) {
 		  selectedChoice.classList.add(classToApply);
@@ -128,6 +129,7 @@ choices.forEach(choice => {
 		        selectedChoice.parentElement.classList.remove(classToApply);
 		      }
 	      getNewQuestion();
+	      countdown();
 	    }, 1000);
 
     });
@@ -145,3 +147,38 @@ var decodeHTML = function (html) {
 	txt.innerHTML = html;
 	return txt.value;
 };
+
+
+  // Countdown timer per question of 10 seconds
+function countdown() {
+  var timeleft = 10;
+  var counter = 0;
+  var countdown = document.getElementById("countdown");
+    $("#countdown").text(timeleft - counter);
+
+  function Time() {
+    counter++;
+    $("#countdown").text(timeleft - counter);
+  }
+  setInterval(Time, 1000);
+}
+
+// ALgemene timer die gespeelde tijd registreert
+let count = 0;
+let intervalRef = null;
+
+intervalRef = setInterval(_ => {
+  count+=10;
+
+  let s = Math.floor((count /  1000)) % 60;
+  let m = Math.floor((count / 60000)) % 60;
+  if(m<10){
+  	m = "0"+ m;
+  }
+  if(s<10){
+  	s = "0" + s;
+  }
+	time = m + ":" + s
+  $('#timer').text(time);
+}, 10);
+

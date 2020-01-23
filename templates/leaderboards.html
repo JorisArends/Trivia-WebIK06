@@ -11,7 +11,7 @@
     <form action="/leaderboards" method="post" id="form">
         <center>
         <div class="input-group">
-            <select required id="inputGroupSelect04", name = "categorie">
+            <select id="inputGroupSelect04", name = "categorie">
                 <option value=0>Select category</option>
                 <option value=9>General Knowledge</option>
                 <option value=17>Science & Nature</option>
@@ -55,6 +55,7 @@
 <br>
 
 <script>
+
 document.getElementById("form").addEventListener("submit", validate);
 
         function validate(e) {
@@ -75,4 +76,5 @@ document.getElementById("form").addEventListener("submit", validate);
         }
 
  </script>
+
 {% endblock %}
