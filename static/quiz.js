@@ -110,7 +110,7 @@ choices.forEach(choice => {
 		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category});
-		// 	return window.location.assign("/game_over");
+			return window.location.assign("/game_over");
 		}
 		if ($(e.target).hasClass('choice-container')) {
 		  selectedChoice.classList.add(classToApply);
@@ -129,6 +129,7 @@ choices.forEach(choice => {
 		        selectedChoice.parentElement.classList.remove(classToApply);
 		      }
 	      getNewQuestion();
+	      countdown();
 	    }, 1000);
 
     });
@@ -147,18 +148,16 @@ var decodeHTML = function (html) {
 	return txt.value;
 };
 
-
-// Countdown timer per question of 10 seconds
-var timeleft = 10;
-var counter = 0;
-
+  // Countdown timer per question of 10 seconds
 function countdown() {
+  var timeleft = 10;
+  var counter = 0;
   var countdown = document.getElementById("countdown");
-    countdown.innerText(timeleft - counter)
+    $("#countdown").text(timeleft - counter);
 
   function Time() {
     counter++;
-    countdown.innerHTML(timeleft - counter)
+    $("#countdown").text(timeleft - counter);
   }
   setInterval(Time, 1000);
 }
