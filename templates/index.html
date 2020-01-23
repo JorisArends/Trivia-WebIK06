@@ -81,17 +81,18 @@
             </div>
         </div>
     </div>
+
 <script>
     $(function(){
 
         $('.card').on('click', function() {
             // Get ID of clicked category
-            var category = $(this).attr('id')
+            var category = $(this).attr('id');
             $.get('/name?category=' + category, function(data){
-            document.getElementById("cat").innerHT= data
+            document.getElementById("cat").innerHT= data;
             });
             // Open pop-up
-            $("#Popup").modal()
+            $("#Popup").modal();
 
             // Send username and category POST to an route to start the quiz (via form)
             var form = document.forms['username'];

@@ -69,12 +69,14 @@ getNewQuestion = () =>  {
 
 	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
+	currentQuestion.question = decodeHTML(currentQuestion.question);
 	question.innerText = currentQuestion.question;
 // 	console.log(question);
 
 	choices.forEach( choice => {
 	    const number = choice.dataset["number"];
-	    choice.innerText = currentQuestion["choice" + number];
+
+	    choice.innerText = decodeHTML(currentQuestion["choice" + number]);
 	});
 
 	// get new question en niet een oude
@@ -135,4 +137,11 @@ choices.forEach(choice => {
 incrementScore = num => {
   score += num;
   scoreText.innerText = score;
+};
+
+//decode html enteties
+var decodeHTML = function (html) {
+	var txt = document.createElement('textarea');
+	txt.innerHTML = html;
+	return txt.value;
 };
