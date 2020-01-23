@@ -11,7 +11,7 @@
     <form action="/leaderboards" method="post" id="form">
         <center>
         <div class="input-group">
-            <select required id="inputGroupSelect04", name = "categorie">
+            <select id="inputGroupSelect04", name = "categorie">
                 <option value=0>Select category</option>
                 <option value=9>General Knowledge</option>
                 <option value=17>Science & Nature</option>
@@ -54,25 +54,24 @@
 <br>
 <br>
 
-// <script>
-// document.getElementById("form").addEventListener("submit", validate);
+<script>
+ document.getElementById("form").addEventListener("submit", validate);
 
-//         function validate(e) {
+         function validate(e) {
 
-//             //get username from form
-//             var option = document.getElementById("inputGroupSelect04").value;
+             //get username from form
+             var option = document.getElementById("inputGroupSelect04").value;
+             //stop form from being submitted
+             e.preventDefault();
 
-//             //stop form from being submitted
-//             e.preventDefault();
+             if(option === "0") {
+                 alert("You haven't selected anything!");
+             }
+             else{
+                 document.getElementById("form").submit();
+             }
 
-//             if(option === "0") {
-//                 alert("You haven't selected anything!");
-//             }
-//             else{
-//                 document.getElementById("form").submit();
-//             }
+         }
 
-//         }
-
-// </script>
+</script>
 {% endblock %}

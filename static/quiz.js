@@ -148,6 +148,7 @@ var decodeHTML = function (html) {
 	return txt.value;
 };
 
+
   // Countdown timer per question of 10 seconds
 function countdown() {
   var timeleft = 10;
@@ -161,3 +162,23 @@ function countdown() {
   }
   setInterval(Time, 1000);
 }
+
+// ALgemene timer die gespeelde tijd registreert
+let count = 0;
+let intervalRef = null;
+
+intervalRef = setInterval(_ => {
+  count+=10;
+
+  let s = Math.floor((count /  1000)) % 60;
+  let m = Math.floor((count / 60000)) % 60;
+  if(m<10){
+  	m = "0"+ m;
+  }
+  if(s<10){
+  	s = "0" + s;
+  }
+	time = m + ":" + s
+  $('#timer').text(time);
+}, 10);
+
