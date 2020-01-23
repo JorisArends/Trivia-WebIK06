@@ -86,14 +86,15 @@ getNewQuestion = () =>  {
 };
 
 choices.forEach(choice => {
-    choice.addEventListener("click", e => {
+    choice.parentElement.addEventListener("click", e => {
     	console.log(e.target);
         if(!acceptingAnswers) return;
 
         acceptingAnswers = false;
+
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-        // console.log(selectedChoice);
+        console.log(selectedChoice);
 
 		// antwoord correct/incorrect
 		//console.log(selectedAnswer == currentQuestion.answer);
@@ -108,13 +109,24 @@ choices.forEach(choice => {
 		else if (classToApply === "incorrect") {
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category});
-			return window.location.assign("/game_over");
+		// 	return window.location.assign("/game_over");
 		}
-    	selectedChoice.parentElement.classList.add(classToApply);
+		if ($(e.target).hasClass('choice-container')) {
+		  selectedChoice.classList.add(classToApply);
+		}
+		else {
+		  selectedChoice.parentElement.classList.add(classToApply);
+		}
+
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
-	      selectedChoice.parentElement.classList.remove(classToApply);
+          if ($(e.target).hasClass('choice-container')) {
+		        selectedChoice.classList.remove(classToApply);
+		      }
+		      else {
+		        selectedChoice.parentElement.classList.remove(classToApply);
+		      }
 	      getNewQuestion();
 	    }, 1000);
 
