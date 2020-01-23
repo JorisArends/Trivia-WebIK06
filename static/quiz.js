@@ -117,7 +117,6 @@ choices.forEach(choice => {
 		}
 
 
-
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
           if ($(e.target).hasClass('choice-container')) {
