@@ -20,7 +20,7 @@ fetch(
   })
 
   .then(json => {
-    // console.log(json.results);
+    console.log(json.results);
     questions = json.results.map(json => {
       const formattedQuestion = {
         question: json.question
@@ -56,6 +56,7 @@ startGame = ()  => {
 	availableQuestions = [ ... questions];
 	// console.log(availableQuestions);
 	getNewQuestion();
+	countdown();
 };
 
 getNewQuestion = () =>  {
@@ -145,3 +146,19 @@ var decodeHTML = function (html) {
 	txt.innerHTML = html;
 	return txt.value;
 };
+
+
+// Countdown timer per question of 10 seconds
+var timeleft = 10;
+var counter = 0;
+
+function countdown() {
+  var countdown = document.getElementById("countdown");
+    countdown.innerText(timeleft - counter)
+
+  function Time() {
+    counter++;
+    countdown.innerHTML(timeleft - counter)
+  }
+  setInterval(Time, 1000);
+}
