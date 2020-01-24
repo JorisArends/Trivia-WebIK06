@@ -107,6 +107,17 @@ choices.forEach(choice => {
 		}
 
 		else if (classToApply === "incorrect") {
+
+		  setTimeout(() => {
+          if ($(e.target).hasClass('choice-container')) {
+		        selectedChoice.classList.add(classToApply);
+		      }
+		      else {
+		        selectedChoice.parentElement.classList.add(classToApply);
+		      }
+	      countdown();
+	    }, 200);
+
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category});
 			return window.location.assign("/game_over");
