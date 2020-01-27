@@ -16,7 +16,7 @@ def category_name(id):
 
     result = {}
     for x in categories:
-        if x["id"] == id:
+        if x["id"] == int(id):
             return x["name"]
     return None
 

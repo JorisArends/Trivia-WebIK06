@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import get_token, category_name
+from helpers import category_name
 
 # Configure application
 app = Flask(__name__)
@@ -34,8 +34,6 @@ def index():
 
 @app.route("/")
 def home():
-    # Forget any token
-    session.clear()
     return render_template("index.html")
 
 
@@ -72,16 +70,9 @@ def game_over():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     if request.method == "POST":
-
-        # Ensure username was submitted
-        if not request.form.get("username"):
-            return jsonify(False)
-
-        # Get session token once name is submitted
-        token = get_token()
-        session["user_id"] = token
-        user = db.execute("INSERT INTO users (username, token) VALUES (?, ?);", (request.form.get("username"), session["user_id"]))
-        return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"), token = token)
+        # Add user to history
+        user = db.execute("INSERT INTO users (username, category) VALUES (?, ?);", (request.form.get("username"), category_name(request.form.get("category"))))
+        return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"))
     else:
         return redirect("/")
 
