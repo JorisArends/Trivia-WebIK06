@@ -6,50 +6,39 @@
 
 {% block main %}
 
-    <div class="container_end">
-      <div id="end" class="flex-center flex-column">
-        <h1></h1><h1 id="finalScore"></h1>
-        <h1 id="username"></h1>
-        <h1 id="category"></h1>
-          <!--
-          <table>
-              <tr>
-                  {% for cell in tabel %}
-                  <th>{{cell}}</th>
-                  {% endfor %}
-              </tr>
-              {% for score in scores %}
-                  <tr>
-                      <td>{{score["positie"]}}</td>
-                      <td>{{score["naam"]}}</td>
-                      <td>{{score["vragen"]}}</td>
-                      <td>{{score["tijd"]}}</td>
-                  </tr>
-              {% endfor %}
-          </table>
-          -->
-        <form action="/quiz" method="post" id="form">
-          <input type="hidden" name="category" value="" size ="40" />
-          <input type="hidden" name="username" value="" size ="40" />
-            <button class="btn_quiz" type="submit">Play again</button>
-        </form>
+  <div class="container_end">
+    <div id="end" class="flex-center flex-column">
 
-        <a class="btn_quiz" href="/">Go Home</a>
-      </div>
+      <!--Game statistics after playing-->
+      <h1 class="stats-main-text">Score</h1>
+      <h1 id="finalScore"></h1>
+
+      <!--Hidden form to send variables to play again quiz-->
+      <form action="/quiz" method="post" id="form">
+        <input type="hidden" name="category" value="" size ="40" />
+        <input type="hidden" name="username" value="" size ="40" />
+          <button class="btn_quiz" type="submit">Play again</button>
+      </form>
+
+      <a class="btn_quiz" href="/">Go Home</a>
     </div>
+  </div>
+
+
 <script>
-var finalScore = localStorage.getItem('mostRecentScore');
-document.getElementById("finalScore").innerHTML = finalScore;
+  document.getElementById("form").addEventListener("submit", send_form);
 
-document.getElementById("form").addEventListener("submit", send_form);
+  function send_form(){
+    var form = document.forms['form'];
+    var category = localStorage.getItem('category');
+    var username = localStorage.getItem('username');
+    form.username.value = username;
+    form.category.value = category;
+    }
 
-function send_form(){
-  var form = document.forms['form'];
-  var category= localStorage.getItem('category');
-  var username= localStorage.getItem('username');
-  form.username.value = username;
-  form.category.value = category;
-}
+  var finalScore = localStorage.getItem('mostRecentScore');
+  document.getElementById("finalScore").innerHTML = finalScore;
+
 </script>
 
 

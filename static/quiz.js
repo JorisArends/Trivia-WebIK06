@@ -10,37 +10,60 @@ let availableQuestions = [];
 
 let questions= [];
 
-// .addEventListener("click", function(event) {
-// fetch(`/quiz?https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&token={token}").json()`)
-fetch(
-"https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple&token="+token+""
-)
+// Source code for property sort helperfunction: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+
+fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple&token="+token+"")
   .then(response => {
     return response.json();
-  })
+    })
 
   .then(json => {
-    console.log(json.results);
     questions = json.results.map(json => {
       const formattedQuestion = {
         question: json.question
-      };
+    };
 
-      const answerChoices = [...json.incorrect_answers];
-      formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
-      answerChoices.splice(
+    // Add difficulty and change values to numbers for comparing
+    if (json.difficulty == "easy"){
+        formattedQuestion.difficulty = 1
+    }
+    else if (json.difficulty == "medium"){
+        formattedQuestion.difficulty = 2
+    }
+    else if (json.difficulty == "hard"){
+        formattedQuestion.difficulty = 3
+    }
+
+    const answerChoices = [...json.incorrect_answers];
+    formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+    answerChoices.splice(
         formattedQuestion.answer - 1,
         0,
         json.correct_answer
-      );
-      answerChoices.forEach((choice, index) => {
-        formattedQuestion["choice" + (index + 1)] = choice;
-      });
-
-      return formattedQuestion;
+    );
+    answerChoices.forEach((choice, index) => {
+    formattedQuestion["choice" + (index + 1)] = choice;
     });
+      return formattedQuestion;
+
+
+    });
+    questions.sort(dynamicSort("difficulty"));
     startGame();
   })
+
+// Errors for debug
   .catch(err => {
     console.error(err);
   });
@@ -54,25 +77,21 @@ startGame = ()  => {
 	// pak array questions en zet het in de array available
 	// full copy van questions
 	availableQuestions = [ ... questions];
-	// console.log(availableQuestions);
 	getNewQuestion();
-	countdown();
 };
-
+var questionIndex = 0;
 getNewQuestion = () =>  {
+    questionIndex ++;
 
 	// als er geen nieuwe vragen meer zijn
     if(availableQuestions.length == 0) {
         // GO TO GAME_OVER.HTML
-
 		return window.location.assign("/game_over");
     }
 
-	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionIndex];
 	currentQuestion.question = decodeHTML(currentQuestion.question);
 	question.innerText = currentQuestion.question;
-// 	console.log(question);
 
 	choices.forEach( choice => {
 	    const number = choice.dataset["number"];
@@ -80,10 +99,11 @@ getNewQuestion = () =>  {
 	    choice.innerText = decodeHTML(currentQuestion["choice" + number]);
 	});
 
-	// get new question en niet een oude
+	// get new question, make sure it is not an old question
 	availableQuestions.splice(questionIndex, 1);
 
 	acceptingAnswers = true;
+	console.log(currentQuestion)
 };
 
 choices.forEach(choice => {
@@ -97,9 +117,7 @@ choices.forEach(choice => {
     const selectedAnswer = selectedChoice.dataset["number"];
 
 		// antwoord correct/incorrect
-		//console.log(selectedAnswer == currentQuestion.answer);
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-// 		console.log(classToApply);
 
 		// vraag correct, score omhoog
 		if (classToApply === "correct") {
@@ -107,29 +125,25 @@ choices.forEach(choice => {
 		}
 
 		else if (classToApply === "incorrect") {
-		  setTimeout(() => {
-          if ($(e.target).hasClass('choice-container')) {
-		        selectedChoice.classList.add(classToApply);
-		      }
-		      else {
-		        selectedChoice.parentElement.classList.add(classToApply);
-		      }
-	      countdown();
-	    }, 200);
+				if ($(e.target).hasClass('choice-container')) {
+		  		selectedChoice.classList.add(classToApply);
+				}
+		  	else {
+		    	selectedChoice.parentElement.classList.add(classToApply);
+		  	}
 
-			localStorage.setItem("mostRecentScore", score);
-			$.get('/insert_score',{username: username, score: score, category: category, time: time});
-			// console.log($.get('/insert_score',{username: username, score: score, category: category, time:time}));
-
-			return window.location.assign("/game_over");
+		localStorage.setItem("mostRecentScore", score);
+		$.get('/insert_score',{username: username, score: score, category: category, time: time});
+		return window.location.assign("/game_over");
 		}
+
 		if ($(e.target).hasClass('choice-container')) {
-		  selectedChoice.classList.add(classToApply);
-		}
-		else {
-		  selectedChoice.parentElement.classList.add(classToApply);
+	  	selectedChoice.classList.add(classToApply);
 		}
 
+		else {
+	  	selectedChoice.parentElement.classList.add(classToApply);
+		}
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
@@ -140,9 +154,7 @@ choices.forEach(choice => {
 		        selectedChoice.parentElement.classList.remove(classToApply);
 		      }
 	      getNewQuestion();
-	      countdown();
 	    }, 1000);
-
     });
 });
 
@@ -158,7 +170,6 @@ var decodeHTML = function (html) {
 	txt.innerHTML = html;
 	return txt.value;
 };
-
 
 // Countdown timer per question of 10 seconds
 function countdown() {

@@ -204,17 +204,17 @@ make the three columns stack on top of each other instead of next to each other 
   background-color: red;
 }
 
-/* Score */
-#punten {
+/* Score/Statistics */
+#stats {
   display: flex;
 }
 
-.punten-prefix {
+.stats-prefix {
   text-align: center;
   font-size: 2rem;
 }
 
-.punten-main-text {
+.stats-main-text {
   text-align: center;
   font-size: 4rem;
   color:  #f0ad4e;

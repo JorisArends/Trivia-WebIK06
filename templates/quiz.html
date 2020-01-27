@@ -5,56 +5,64 @@
 {% endblock %}
 
 {% block main %}
-<div class= "container_quiz">
-	<div id= "game" class= "justify-center flex-column">
-		<div id= "punten">
-			<div id= "punten-item">
-				<p class= "punten-prefix"> <strong> Score </strong></p>
-				<h1 class= "punten-main-text" id= "score">0</h1>
+<!--Quiz block-->
+<div class="container_quiz">
+	<div id="game" class= "justify-center flex-column">
+		<div id="statistics">
+
+			<!--Game score-->
+			<div id="stats_item">
+				<p class= "stats-prefix"> <strong> Score </strong></p>
+				<h1 class= "stats-main-text" id= "score">0</h1>
 			</div>
 
-
-			<div id= "countdown_timer">
-				<p class= "punten-prefix"> <strong> Timer </strong></p>
-				<h1 class= "punten-main-text" id="countdown">0</h1>
+			<!--Countdown timer-->
+			<div id="countdown_timer">
+				<p class= "stats-prefix"> <strong> Timer </strong></p>
+				<h1 class= "stats-main-text" id="countdown">0</h1>
 			</div>
 
-			<div id="punten-item" style="width:100px">
-				<p class= "punten-prefix"><strong>Tijd</strong></p>
-				<h1 class= "punten-main-text" id="timer">00:00</h1>
-
+			<!--Total time played-->
+			<div id="total_time">
+				<p class= "stats-prefix"><strong>Tijd</strong></p>
+				<h1 class= "stats-main-text" id="timer">00:00</h1>
 			</div>
-
 		</div>
 
+		<!--Question box-->
 		<h2 id= "question"></h2>
-		<div class= "choice-container" data-number= "1">
-		<p class= "choice-prefix"> A </p>
-		<p class= "choice-text" data-number= "1" id="1"></p>
-		</div>
-		<div class= "choice-container" data-number= "2">
-		<p class= "choice-prefix"> B </p>
-		<p class= "choice-text" data-number= "2" id="2"></p>
-		</div>
-		<div class= "choice-container" data-number= "3">
-		<p class= "choice-prefix"> C </p>
-		<p class= "choice-text" data-number= "3" id="3"></p>
-		</div>
-		<div class= "choice-container" data-number= "4">
-		<p class= "choice-prefix"> D </p>
-		<p class= "choice-text" data-number= "4" id="4"></p>
-		</div>
+
+			<!--Answer choices-->
+			<div class= "choice-container" data-number= "1">
+				<p class= "choice-prefix"> A </p>
+				<p class= "choice-text" data-number= "1" id="1"></p>
+			</div>
+
+			<div class= "choice-container" data-number= "2">
+				<p class= "choice-prefix"> B </p>
+				<p class= "choice-text" data-number= "2" id="2"></p>
+			</div>
+
+			<div class= "choice-container" data-number= "3">
+				<p class= "choice-prefix"> C </p>
+				<p class= "choice-text" data-number= "3" id="3"></p>
+			</div>
+
+			<div class= "choice-container" data-number= "4">
+				<p class= "choice-prefix"> D </p>
+				<p class= "choice-text" data-number= "4" id="4"></p>
+			</div>
 	</div>
 </div>
-<!--Global variabelen voor de quizpagina-->
-<script type="text/javascript">
-   category = "{{category}}";
-   token = "{{token}}";
-   username = "{{username}}";
 
-   localStorage.setItem("username", username);
-   localStorage.setItem("category", category);
+<!--Global variables for quizpage-->
+<script type="text/javascript">
+	category = "{{category}}";
+    token = "{{token}}";
+    username = "{{username}}";
+    localStorage.setItem("username", username);
+    localStorage.setItem("category", category);
 </script>
-<script src= "../static/quiz.js"> </script>
+<script src= "../static/quiz.js"></script>
 
 {% endblock %}

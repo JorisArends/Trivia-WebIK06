@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block main %}
-
 <br>
-
+    <!--Leaderboard selection menu for categories-->
+<center>
     <form action="/leaderboards" method="post" id="form">
-        <center>
         <div class="input-group">
-            <select id="inputGroupSelect04", name = "categorie" required>
+            <select id="inputGroupSelect04", name="category" required>
                 <option value="">Select category</option>
                 <option value=9>General Knowledge</option>
                 <option value=17>Science & Nature</option>
@@ -22,7 +21,7 @@
                 <option value=12>Entertainment: Music</option>
                 <option value=15>Entertainment: Video games</option>
             </select>
-            <select id="inputGroupSelect03", name = "hoeveelheid" style="width:60px">
+            <select id="inputGroupSelect03", name="amount" style="width:60px">
                 <option>10</option>
                 <option>20</option>
                 <option>50</option>
@@ -31,28 +30,26 @@
                 <button class="btn btn-secondary" type="submit">Show</button>
             </div>
         </div>
-        </center>
     </form>
+</center>
 <br>
-<center>
-    <table>
-        <tr>
-            {% for cell in tabel %}
-            <th>{{cell}}</th>
-            {% endfor %}
-        </tr>
-        {% for score in scores %}
+
+    <!--Leaderboard table-->
+    <center>
+        <table>
             <tr>
-                <td>{{score["positie"]}}</td>
-                <td>{{score["naam"]}}</td>
-                <td>{{score["vragen"]}}</td>
-                <td>{{score["tijd"]}}</td>
+                {% for cell in tabel %}
+                <th>{{cell}}</th>
+                {% endfor %}
             </tr>
-        {% endfor %}
-    </table>
+            {% for score in scores %}
+                <tr>
+                    <td>{{score["positie"]}}</td>
+                    <td>{{score["naam"]}}</td>
+                    <td>{{score["vragen"]}}</td>
+                    <td>{{score["tijd"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </center>
-<br>
-<br>
-
-
 {% endblock %}
