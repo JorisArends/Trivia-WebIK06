@@ -160,13 +160,13 @@ make the three columns stack on top of each other instead of next to each other 
   flex-direction: column;
 }
 
-.justify-center {
-  justify-content: center;
-}
+/*.justify-center {*/
+/*  justify-content: center;*/
+/*}*/
 
-.justify-evenly {
-  justify-content: space-around;
-}
+/*.justify-evenly {*/
+/*  justify-content: space-around;*/
+/*}*/
 
 .choice-container {
   display: flex;
@@ -209,7 +209,7 @@ make the three columns stack on top of each other instead of next to each other 
 }
 
 /* Score/Statistics */
-#stats {
+#statistics {
   display: flex;
   justify-content: space-between;
   width: 70%;
