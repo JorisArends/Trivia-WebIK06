@@ -23,7 +23,7 @@ function dynamicSort(property) {
     }
 }
 
-fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple&token="+token+"")
+fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple")
   .then(response => {
     return response.json();
     })
