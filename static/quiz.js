@@ -104,17 +104,29 @@ choices.forEach(choice => {
 		// vraag correct, score omhoog
 		if (classToApply === "correct") {
 			incrementScore(punten_score);
+
+			if ($(e.target).hasClass('choice-container')) {
+		  selectedChoice.classList.add(classToApply);
+			}
+			// else if ($(e.target).hasClass('choice-prefix')) {
+			// 	$('choice-prefix').addClass('correct');
+			// }
+			else {
+			  selectedChoice.parentElement.classList.add(classToApply);
+			}
 		}
 
 		else if (classToApply === "incorrect") {
-		  setTimeout(() => {
           if ($(e.target).hasClass('choice-container')) {
 		        selectedChoice.classList.add(classToApply);
 		      }
+
+		      // else if ($(e.target).hasClass('choice-prefix')) {
+		      // 	selectedChoice.classList.add(classToApply);
+		      // }
 		      else {
 		        selectedChoice.parentElement.classList.add(classToApply);
 		      }
-	    }, 200);
 
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category, time: time});
@@ -122,19 +134,17 @@ choices.forEach(choice => {
 
 			return window.location.assign("/game_over");
 		}
-		if ($(e.target).hasClass('choice-container')) {
-		  selectedChoice.classList.add(classToApply);
-		}
-		else {
-		  selectedChoice.parentElement.classList.add(classToApply);
-		}
-
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
           if ($(e.target).hasClass('choice-container')) {
 		        selectedChoice.classList.remove(classToApply);
 		      }
+
+		   //   else if ($(e.target).hasClass('choice-prefix')) {
+					// 	selectedChoice.classList.remove(classToApply);
+					// }
+
 		      else {
 		        selectedChoice.parentElement.classList.remove(classToApply);
 		      }
