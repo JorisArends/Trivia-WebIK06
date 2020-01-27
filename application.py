@@ -57,7 +57,7 @@ def leaderboards():
             i+=1
 
         #values for the header of the table(this way, the values dont get printed if method is GET)
-        tabel = ["#", "naam", "vragen goed", "tijd"]
+        tabel = ["", "Naam", "Score", "Tijd"]
 
         return render_template("leaderboards.html", scores = scores[:x], tabel = tabel)
 
