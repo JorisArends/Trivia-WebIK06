@@ -171,10 +171,14 @@ make the three columns stack on top of each other instead of next to each other 
 .choice-container {
   display: flex;
   margin-bottom: 0.5rem;
-  width: 100%;
+  width:100%;
   font-size: 1.8rem;
   border: 0.1rem solid rgba(255,153,51,1);
   background-color: white;
+}
+
+#game{
+  width: 70%;
 }
 
 .choice-container:hover {
