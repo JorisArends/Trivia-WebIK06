@@ -56,7 +56,6 @@ startGame = ()  => {
 	availableQuestions = [ ... questions];
 	// console.log(availableQuestions);
 	getNewQuestion();
-	countdown();
 };
 
 getNewQuestion = () =>  {
@@ -64,7 +63,8 @@ getNewQuestion = () =>  {
 	// als er geen nieuwe vragen meer zijn
     if(availableQuestions.length == 0) {
         // GO TO GAME_OVER.HTML
-
+		localStorage.setItem("mostRecentScore", score);
+		$.get('/insert_score',{username: username, score: score, category: category, time: time});
 		return window.location.assign("/game_over");
     }
 
@@ -114,7 +114,6 @@ choices.forEach(choice => {
 		      else {
 		        selectedChoice.parentElement.classList.add(classToApply);
 		      }
-	      countdown();
 	    }, 200);
 
 			localStorage.setItem("mostRecentScore", score);
@@ -140,7 +139,7 @@ choices.forEach(choice => {
 		        selectedChoice.parentElement.classList.remove(classToApply);
 		      }
 	      getNewQuestion();
-	      countdown();
+	      timeleft += 10;
 	    }, 1000);
 
     });
@@ -161,35 +160,54 @@ var decodeHTML = function (html) {
 
 
 // Countdown timer per question of 10 seconds
-function countdown() {
-  var timeleft = 10;
-  var counter = 0;
-  var countdown = document.getElementById("countdown");
-    $("#countdown").text(timeleft - counter);
-
-  function Time() {
-    counter++;
-    $("#countdown").text(timeleft - counter);
-  }
-  setInterval(Time, 1000);
-}
+//function countdown() {
+//  var timeleft = 10;
+//  var counter = 0;
+//  var countdown = document.getElementById("countdown");
+//    $("#countdown").text(timeleft - counter);
+//
+//  function Time() {
+//    counter++;
+//    $("#countdown").text(timeleft - counter);
+//  }
+//  setInterval(Time, 1000);
+//}
 
 // ALgemene timer die gespeelde tijd registreert
+
 let count = 0;
 let intervalRef = null;
+let timeleft = 10;
 
-intervalRef = setInterval(_ => {
-  count+=10;
+	intervalRef = setInterval(_ => {
+	  count+=1000;
 
-  let s = Math.floor((count /  1000)) % 60;
-  let m = Math.floor((count / 60000)) % 60;
-  if(m<10){
-  	m = "0"+ m;
-  }
-  if(s<10){
-  	s = "0" + s;
-  }
-	time = m + ":" + s
-  $('#timer').text(time);
-}, 10);
+	  let s = Math.floor((count /  1000)) % 60;
+	  let m = Math.floor((count / 60000)) % 60;
+	  if(m<10){
+	  	m = "0"+ m;
+	  }
+	  if(s<10){
+	  	s = "0" + s;
+	  }
+		time = m + ":" + s;
+	  $('#timer').text(time);
+
+
+
+		countdown = timeleft - s;
+		if (countdown <= 0){
+
+
+
+			localStorage.setItem("mostRecentScore", score);
+			$.get('/insert_score',{username: username, score: score, category: category, time: time});
+			return window.location.assign("/game_over");
+		}
+		$("#countdown").text(countdown);
+
+
+
+
+	}, 1000);
 
