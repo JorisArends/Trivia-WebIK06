@@ -70,8 +70,6 @@ def game_over():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     if request.method == "POST":
-        # Add user to history
-        user = db.execute("INSERT INTO users (username, category) VALUES (?, ?);", (request.form.get("username"), category_name(request.form.get("category"))))
         return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"))
     else:
         return redirect("/")
