@@ -1,9 +1,8 @@
 import os
-import sys
 from cs50 import SQL
 from flask import redirect, render_template, request, session, jsonify
 import requests
-import urllib.parse
+
 db = SQL("sqlite:///trivia.db")
 
 # Function to get the category name by category ID
@@ -25,3 +24,16 @@ def ranking(category):
         score["positie"] = i
         i+=1
     return scores
+
+# DB Execute functions
+def prev_score(username, category):
+    # Check if user has a previous score
+    return db.execute("SELECT * FROM scores WHERE naam = ? AND categorie = ?", (username, category))
+
+def insert_score(username, score, time, category):
+    # Insert new score after finishing quiz
+    return db.execute("INSERT INTO scores (naam, vragen, tijd, categorie) VALUES(?, ?, ?, ?);", (username, score, time, category))
+
+def update_score(username, score, time, category):
+    # Update old score when user beats his own previous score
+    db.execute("UPDATE scores SET vragen = ?, tijd = ? WHERE naam = ? AND categorie = ?", (score, time, username, category))
