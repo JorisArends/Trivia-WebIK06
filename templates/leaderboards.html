@@ -7,8 +7,8 @@
 {% block main %}
 <br>
     <!--Leaderboard selection menu for categories-->
-<center>
     <form action="/leaderboards" method="post" id="form">
+    <center>
         <div class="input-group">
             <select id="inputGroupSelect04", name="category" required>
                 <option value="">Select category</option>
@@ -30,8 +30,9 @@
                 <button class="btn btn-secondary" type="submit">Show</button>
             </div>
         </div>
+    </center>
     </form>
-</center>
+
 <br>
 
     <!--Leaderboard table-->
@@ -44,7 +45,7 @@
             </tr>
             {% for score in scores %}
                 <tr>
-                    <td>{{score["positie"]}}</td>
+                    <td><b>{{score["positie"]}}</b></td>
                     <td>{{score["naam"]}}</td>
                     <td>{{score["vragen"]}}</td>
                     <td>{{score["tijd"]}}</td>
