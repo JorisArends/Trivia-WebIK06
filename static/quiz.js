@@ -1,3 +1,4 @@
+// variables from /quiz
 const question = document.getElementById("question");
 const choices= Array.from(document.getElementsByClassName("choice-text"));
 const scoreText = document.getElementById("score");
@@ -12,41 +13,43 @@ let questions= [];
 // get questions from API
 fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple")
   .then(response => {
-    return response.json();
-    })
+  	return response.json();
+  })
 
   .then(json => {
-    questions = json.results.map(json => {
-      const formattedQuestion = {
-        question: json.question
-    };
+  	questions = json.results.map(json => {
+  		const formattedQuestion = {
+  			question: json.question
+  		};
 
-    // Add difficulty and change values to numbers for comparing
-    if (json.difficulty == "easy"){
-        formattedQuestion.difficulty = 1;
-    }
-    else if (json.difficulty == "medium"){
-        formattedQuestion.difficulty = 2;
-    }
-    else if (json.difficulty == "hard"){
-        formattedQuestion.difficulty = 3;
-    }
+	    // Add difficulty and change values to numbers for comparing
+	    if (json.difficulty == "easy"){
+	        formattedQuestion.difficulty = 1;
+	    }
+	    else if (json.difficulty == "medium"){
+	        formattedQuestion.difficulty = 2;
+	    }
+	    else if (json.difficulty == "hard"){
+	        formattedQuestion.difficulty = 3;
+	    }
 
-	// multiple choice answers randomized
-    const answerChoices = [...json.incorrect_answers];
-    formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
-    answerChoices.splice(
-        formattedQuestion.answer - 1,
-        0,
-        json.correct_answer
-    );
-    answerChoices.forEach((choice, index) => {
-    formattedQuestion["choice" + (index + 1)] = choice;
+		// multiple choice answers randomized everytime quiz is played
+	    const answerChoices = [...json.incorrect_answers];
+	    formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+	    answerChoices.splice(
+	        formattedQuestion.answer - 1,
+	        0,
+	        json.correct_answer
+	        );
+	    answerChoices.forEach((choice, index) => {
+	    	formattedQuestion["choice" + (index + 1)] = choice;
+	    });
+
+	    return formattedQuestion;
+
+
     });
-      return formattedQuestion;
 
-
-    });
     questions.sort(dynamicSort("difficulty"));
     startGame();
   })
@@ -56,10 +59,10 @@ fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple
     console.error(err);
   });
 
-
 // variable for score
 const punten_score = 1;
 
+// function: get a list copy of API questions
 startGame = ()  => {
 	score = 0;
 	// full copy of array questions
@@ -68,6 +71,8 @@ startGame = ()  => {
 };
 
 var questionIndex = 0;
+
+// function: go to the next question
 getNewQuestion = () =>  {
     questionIndex ++;
 
@@ -83,6 +88,7 @@ getNewQuestion = () =>  {
 	currentQuestion.question = decodeHTML(currentQuestion.question);
 	question.innerText = currentQuestion.question;
 
+	// every option (A,B,C,D) is numbered
 	choices.forEach( choice => {
 	    const number = choice.dataset["number"];
 
@@ -95,6 +101,7 @@ getNewQuestion = () =>  {
 	acceptingAnswers = true;
 };
 
+// every option that is selected (e.target) is a number
 choices.forEach(choice => {
 	choice.parentElement.addEventListener("click", e => {
 	    if(!acceptingAnswers) return;
@@ -104,15 +111,15 @@ choices.forEach(choice => {
 	    const selectedChoice = e.target;
 	    const selectedAnswer = selectedChoice.dataset["number"];
 
-		// see if selected answer == API answer
+		// check if selected answer by user is equal to API answer number
 		// classToApply, see CSS
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-		// increment score
+		// if answer correct: increment score & apply classToApply when clicked (e.target)
+		// if answer incorrect: apply classToApply when clicked (e.target) & put score,time in db and go to /game_over
 		if (classToApply === "correct") {
 			incrementScore(punten_score);
 
-			// if clicked (e.target) apply classToApply
 			if ($(e.target).hasClass('choice-container') ) {
 				selectedChoice.classList.add(classToApply);
 			}
@@ -125,7 +132,6 @@ choices.forEach(choice => {
 		}
 
 		else if (classToApply === "incorrect") {
-			// if clicked (e.target) apply classToApply
 			if ($(e.target).hasClass('choice-container') ) {
 	  			selectedChoice.classList.add(classToApply);
 			}
@@ -136,16 +142,14 @@ choices.forEach(choice => {
 		    	selectedChoice.parentElement.classList.add(classToApply);
 		  	}
 
-			// put score & time in db and go to /game_over
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category, time: time});
 			return window.location.assign("/game_over");
 		}
 
 
-		// wait 1 sec before going to next question
+		// wait 1 sec and remove classToApply before going to next question
 	    setTimeout(() => {
-	      // remove classToApply
 	      if ($(e.target).hasClass('choice-container')) {
 	      	selectedChoice.classList.remove(classToApply);
 		   }
