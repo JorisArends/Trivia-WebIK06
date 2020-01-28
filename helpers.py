@@ -12,11 +12,11 @@ def get_token():
 # Function to get the category name by category ID
 def category_name(id):
     response = requests.get(f"https://opentdb.com/api_category.php").json()
-    categories = response["trivia_categories"]
+    list = response["trivia_categories"]
 
-    result = {}
-    for x in categories:
-        if x["id"] == int(id):
-            return x["name"]
-    return None
+    categories = {}
+
+    for dict in list:
+        categories[dict['id']] = dict['name']
+    return categories
 
