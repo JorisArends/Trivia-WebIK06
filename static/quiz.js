@@ -20,9 +20,10 @@ function dynamicSort(property) {
     return function (a,b) {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
-    }
+    };
 }
 
+// get questions from API
 fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple")
   .then(response => {
     return response.json();
@@ -36,15 +37,16 @@ fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple
 
     // Add difficulty and change values to numbers for comparing
     if (json.difficulty == "easy"){
-        formattedQuestion.difficulty = 1
+        formattedQuestion.difficulty = 1;
     }
     else if (json.difficulty == "medium"){
-        formattedQuestion.difficulty = 2
+        formattedQuestion.difficulty = 2;
     }
     else if (json.difficulty == "hard"){
-        formattedQuestion.difficulty = 3
+        formattedQuestion.difficulty = 3;
     }
 
+	// multiple choice answers randomized
     const answerChoices = [...json.incorrect_answers];
     formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
     answerChoices.splice(
@@ -69,21 +71,21 @@ fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple
   });
 
 
-// aantal vragen correct is een punt
+// variable for score
 const punten_score = 1;
 
 startGame = ()  => {
 	score = 0;
-	// pak array questions en zet het in de array available
-	// full copy van questions
+	// full copy of array questions
 	availableQuestions = [ ... questions];
 	getNewQuestion();
 };
+
 var questionIndex = 0;
 getNewQuestion = () =>  {
     questionIndex ++;
 
-	// als er geen nieuwe vragen meer zijn
+	// no new questions return to /game_over
     if(availableQuestions.length == 0) {
         // GO TO GAME_OVER.HTML
 		localStorage.setItem("mostRecentScore", score);
@@ -105,12 +107,10 @@ getNewQuestion = () =>  {
 	availableQuestions.splice(questionIndex, 1);
 
 	acceptingAnswers = true;
-	console.log(currentQuestion)
 };
 
 choices.forEach(choice => {
 	choice.parentElement.addEventListener("click", e => {
-	    console.log(e.target);
 	    if(!acceptingAnswers) return;
 
 	    acceptingAnswers = false;
@@ -118,35 +118,35 @@ choices.forEach(choice => {
 	    const selectedChoice = e.target;
 	    const selectedAnswer = selectedChoice.dataset["number"];
 
-		// antwoord correct/incorrect
+		// see if selected answer == API answer
+		// classToApply, see CSS
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-		// vraag correct, score omhoog
+		// increment score
 		if (classToApply === "correct") {
 			incrementScore(punten_score);
 
+			// if clicked (e.target) apply classToApply
 			if ($(e.target).hasClass('choice-container') ) {
 				selectedChoice.classList.add(classToApply);
 			}
-
 			else if ($(e.target).hasClass('choice-prefix')) {
 				selectedChoice.parentElement.classList.add(classToApply);
 			}
-
 			else {
 			  selectedChoice.parentElement.classList.add(classToApply);
 			}
 		}
 
+		// put score & time in db and return to /game_over
 		else if (classToApply === "incorrect") {
+			// if clicked (e.target) apply classToApply
 			if ($(e.target).hasClass('choice-container') ) {
 	  			selectedChoice.classList.add(classToApply);
 			}
-
 			else if ($(e.target).hasClass('choice-prefix')) {
 				selectedChoice.parentElement.classList.add(classToApply);
 			}
-
 		  	else {
 		    	selectedChoice.parentElement.classList.add(classToApply);
 		  	}
@@ -157,14 +157,14 @@ choices.forEach(choice => {
 		}
 
 
-		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
+		// wait 1 sec before going to next question
 	    setTimeout(() => {
 	      if ($(e.target).hasClass('choice-container')) {
 	      	selectedChoice.classList.remove(classToApply);
 		   }
 
 	      else if ($(e.target).hasClass('choice-prefix')) {
-			selectedChoice.parentElement.classList.remove(classToApply);;
+			selectedChoice.parentElement.classList.remove(classToApply);
 			}
 
 	      else {
@@ -176,7 +176,7 @@ choices.forEach(choice => {
 	});
 });
 
-// score omhoog functie
+// function score(punten increases)
 incrementScore = num => {
   score += num;
   scoreText.innerText = score;

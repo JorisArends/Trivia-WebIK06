@@ -164,14 +164,6 @@ make the three columns stack on top of each other instead of next to each other 
   flex-direction: column;
 }
 
-/*.justify-center {*/
-/*  justify-content: center;*/
-/*}*/
-
-/*.justify-evenly {*/
-/*  justify-content: space-around;*/
-/*}*/
-
 .choice-container {
   display: flex;
   margin-bottom: 0.5rem;
@@ -204,6 +196,7 @@ make the three columns stack on top of each other instead of next to each other 
   margin: 0;
 }
 
+/* classToApply */
 .correct {
   background-color: green;
 }
@@ -241,11 +234,6 @@ make the three columns stack on top of each other instead of next to each other 
   margin: 0 auto;
   padding: 2rem;
 }
-
-/*.flex-center {*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
 
 .btn_quiz {
   font-size: 1.8rem;
