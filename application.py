@@ -70,8 +70,10 @@ def game_over():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     if request.method == "POST":
-        return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"))
-
+        return render_template("quiz.html",
+        category = request.form.get("category"),
+        username = request.form.get("username"),
+        category_name = category_name(request.form.get("category")))
     return redirect("/")
 
 
