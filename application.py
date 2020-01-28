@@ -42,24 +42,24 @@ def leaderboards():
     #if method is get, show page without table
     if request.method == "GET":
         return render_template("leaderboards.html")
-    else:
-        # get category from form
-        categorie = request.form["category"]
-        #get size of table from form
-        x = int(request.form["amount"])
-        #get values from a category from the database, and sort them
-        scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
 
-        #give all entries for leaderboard the correct ranking
-        i = 1
-        for score in scores:
-            score["positie"] = i
-            i+=1
+    # get category from form
+    categorie = request.form["category"]
+    #get size of table from form
+    x = int(request.form["amount"])
+    #get values from a category from the database, and sort them
+    scores = db.execute("SELECT * FROM scores WHERE categorie = ? ORDER BY vragen DESC, tijd ASC", (categorie,))
 
-        #values for the header of the table(this way, the values dont get printed if method is GET)
-        tabel = ["", "Naam", "Score", "Tijd"]
+    #give all entries for leaderboard the correct ranking
+    i = 1
+    for score in scores:
+        score["positie"] = i
+        i+=1
 
-        return render_template("leaderboards.html", scores = scores[:x], tabel = tabel)
+    #values for the header of the table(this way, the values dont get printed if method is GET)
+    tabel = ["", "Naam", "Score", "Tijd"]
+
+    return render_template("leaderboards.html", scores = scores[:x], tabel = tabel)
 
 
 @app.route("/game_over", methods=["GET", "POST"])
@@ -71,8 +71,8 @@ def game_over():
 def quiz():
     if request.method == "POST":
         return render_template("quiz.html", category = request.form.get("category"), username = request.form.get("username"))
-    else:
-        return redirect("/")
+
+    return redirect("/")
 
 
 @app.route("/name", methods=["GET", "POST"])

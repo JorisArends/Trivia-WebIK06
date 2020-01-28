@@ -109,14 +109,14 @@ getNewQuestion = () =>  {
 };
 
 choices.forEach(choice => {
-  choice.parentElement.addEventListener("click", e => {
-    console.log(e.target);
-    if(!acceptingAnswers) return;
+	choice.parentElement.addEventListener("click", e => {
+	    console.log(e.target);
+	    if(!acceptingAnswers) return;
 
-    acceptingAnswers = false;
+	    acceptingAnswers = false;
 
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
+	    const selectedChoice = e.target;
+	    const selectedAnswer = selectedChoice.dataset["number"];
 
 		// antwoord correct/incorrect
 		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
@@ -125,43 +125,43 @@ choices.forEach(choice => {
 		if (classToApply === "correct") {
 			incrementScore(punten_score);
 
-			if ($(e.target).hasClass('choice-container')) {
-		  selectedChoice.classList.add(classToApply);
+			if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
+				selectedChoice.classList.add(classToApply);
 			}
+
 			// else if ($(e.target).hasClass('choice-prefix')) {
-			// 	$('choice-prefix').addClass('correct');
+			// 	selectedChoice.classList.add(classToApply);
 			// }
+
 			else {
 			  selectedChoice.parentElement.classList.add(classToApply);
 			}
 		}
 
 		else if (classToApply === "incorrect") {
-				if ($(e.target).hasClass('choice-container')) {
-		  		selectedChoice.classList.add(classToApply);
-				}
+			if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
+	  			selectedChoice.classList.add(classToApply);
+			}
+
+			// else if ($(e.target).hasClass('choice-prefix')) {
+			// 	selectedChoice.classList.add(classToApply);
+			// }
+
 		  	else {
 		    	selectedChoice.parentElement.classList.add(classToApply);
 		  	}
 
-		localStorage.setItem("mostRecentScore", score);
-		$.get('/insert_score',{username: username, score: score, category: category, time: time});
-		return window.location.assign("/game_over");
+			localStorage.setItem("mostRecentScore", score);
+			$.get('/insert_score',{username: username, score: score, category: category, time: time});
+			return window.location.assign("/game_over");
 		}
 
-		if ($(e.target).hasClass('choice-container')) {
-	  	selectedChoice.classList.add(classToApply);
-		}
-
-		else {
-	  	selectedChoice.parentElement.classList.add(classToApply);
-		}
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
-          if ($(e.target).hasClass('choice-container')) {
+	      if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
 		        selectedChoice.classList.remove(classToApply);
-		      }
+		   }
 
 		   //   else if ($(e.target).hasClass('choice-prefix')) {
 					// 	selectedChoice.classList.remove(classToApply);
@@ -173,7 +173,7 @@ choices.forEach(choice => {
 	      getNewQuestion();
 	      timeleft += 10;
 	    }, 1000);
-    });
+	});
 });
 
 // score omhoog functie
