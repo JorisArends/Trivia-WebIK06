@@ -5,7 +5,18 @@
     <head>
 		<!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+        {%- if request.path == "/" %}<meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
+
+        {%- if request.path == "/leaderboards" %}<meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
+
+        {%- if request.path == "/quiz" %}<meta name="viewport" content="width=device-width, initial-scale=0.6">{% endif %}
+
+        {%- if request.path == "/game_over" %}<meta name="viewport" content="width=device-width, initial-scale=0.8">{% endif %}
+
+
 
         <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
