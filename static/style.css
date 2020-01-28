@@ -120,6 +120,10 @@ select {
   width:100%;
 }
 
+/*.img {*/
+/*  height: 80%;*/
+/*}*/
+
 .modal {
   position: fixed;
   top: 50%;
