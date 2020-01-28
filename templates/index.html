@@ -92,11 +92,15 @@
             // Open pop-up
             $("#Popup").modal();
 
+            // Cursor automatically in username input-box
+            $(".form-control").focus();
+
             // Send username and category POST to an route to start the quiz (via form)
             var form = document.forms['username'];
             form.category.value = category;
         });
     });
+
 </script>
 
 {% endblock %}
