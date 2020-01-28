@@ -8,6 +8,7 @@
 <!--Quiz block-->
 <div class="container_quiz">
 	<div id="game" class= "justify-center flex-column">
+	<p class="stats-main-text" id="category_name">{{ category_name }}</p>
 		<div id="statistics">
 
 			<!--Game score-->
@@ -61,6 +62,10 @@
     username = "{{username}}";
     localStorage.setItem("username", username);
     localStorage.setItem("category", category);
+
+    // $.get('/name?category=' + category, function(data){
+    // document.getElementById("category_name").innerHTML= data
+    // });
 </script>
 <script src= "../static/quiz.js"></script>
 
