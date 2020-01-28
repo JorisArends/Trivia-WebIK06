@@ -125,13 +125,13 @@ choices.forEach(choice => {
 		if (classToApply === "correct") {
 			incrementScore(punten_score);
 
-			if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
+			if ($(e.target).hasClass('choice-container') ) {
 				selectedChoice.classList.add(classToApply);
 			}
 
-			// else if ($(e.target).hasClass('choice-prefix')) {
-			// 	selectedChoice.classList.add(classToApply);
-			// }
+			else if ($(e.target).hasClass('choice-prefix')) {
+				selectedChoice.parentElement.classList.add(classToApply);
+			}
 
 			else {
 			  selectedChoice.parentElement.classList.add(classToApply);
@@ -139,13 +139,13 @@ choices.forEach(choice => {
 		}
 
 		else if (classToApply === "incorrect") {
-			if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
+			if ($(e.target).hasClass('choice-container') ) {
 	  			selectedChoice.classList.add(classToApply);
 			}
 
-			// else if ($(e.target).hasClass('choice-prefix')) {
-			// 	selectedChoice.classList.add(classToApply);
-			// }
+			else if ($(e.target).hasClass('choice-prefix')) {
+				selectedChoice.parentElement.classList.add(classToApply);
+			}
 
 		  	else {
 		    	selectedChoice.parentElement.classList.add(classToApply);
@@ -159,20 +159,20 @@ choices.forEach(choice => {
 
 		// wacht voor 1 sec voordat het doorgaat met vraag maakt niet uit of correct/incorrect
 	    setTimeout(() => {
-	      if ($(e.target).hasClass('choice-container') || $(e.target).hasClass('choice-prefix')) {
-		        selectedChoice.classList.remove(classToApply);
+	      if ($(e.target).hasClass('choice-container')) {
+	      	selectedChoice.classList.remove(classToApply);
 		   }
 
-		   //   else if ($(e.target).hasClass('choice-prefix')) {
-					// 	selectedChoice.classList.remove(classToApply);
-					// }
+	      else if ($(e.target).hasClass('choice-prefix')) {
+			selectedChoice.parentElement.classList.remove(classToApply);;
+			}
 
-		      else {
-		        selectedChoice.parentElement.classList.remove(classToApply);
-		      }
-	      getNewQuestion();
-	      timeleft += 10;
-	    }, 1000);
+	      else {
+	        selectedChoice.parentElement.classList.remove(classToApply);
+	      }
+    	getNewQuestion();
+    	timeleft += 10;
+    	}, 1000);
 	});
 });
 
