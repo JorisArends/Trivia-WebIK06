@@ -7,21 +7,7 @@ let acceptingAnswers = false;
 let score = 0;
 
 let availableQuestions = [];
-
 let questions= [];
-
-// Source code for property sort helperfunction: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
-function dynamicSort(property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-}
 
 fetch("https://opentdb.com/api.php?amount=50&category="+category+"&type=multiple")
   .then(response => {
@@ -176,20 +162,20 @@ choices.forEach(choice => {
 	});
 });
 
-// score omhoog functie
+// Add score points
 incrementScore = num => {
   score += num;
   scoreText.innerText = score;
 };
 
-//decode html enteties
+// Decode HTML enities
 var decodeHTML = function (html) {
 	var txt = document.createElement('textarea');
 	txt.innerHTML = html;
 	return txt.value;
 };
 
-
+// Timer for countdown and total time
 let count = 0;
 let intervalRef = null;
 let timeleft = 10;
@@ -210,12 +196,22 @@ let timeleft = 10;
 
 		countdown = timeleft - s;
 		if (countdown <= 0){
-
 			localStorage.setItem("mostRecentScore", score);
 			$.get('/insert_score',{username: username, score: score, category: category, time: time});
 			return window.location.assign("/game_over");
 		}
 		$("#countdown").text(countdown);
-
 	}, 1000);
 
+// Source code for property-sort helperfunction: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
