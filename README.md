@@ -1,4 +1,4 @@
-# Titel website
+# Trivia quiz Webprogrammeren & Databases 2020
 
 ## Team IK06
 * Joris Arends 12658650
