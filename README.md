@@ -11,8 +11,8 @@ Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de q
 ## Applicatie
 
 :-------------------------:|:-------------------------:
-![alt tekst](/doc/index.png "Index page")|  ![alt tekst](/doc/quiz.png "Quiz page")
-![alt tekst](/doc/game_over.png "Quiz page")| ![alt tekst](/doc/leaderboards.png "Leaderboards page")
+![alt tekst](/doc/index.png "Index page") |  ![alt tekst](/doc/quiz.png "Quiz page")
+![alt tekst](/doc/game_over.png "Quiz page") | ![alt tekst](/doc/leaderboards.png "Leaderboards page")
 
 ## Features
 ### De gebruiker kan:
