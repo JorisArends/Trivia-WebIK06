@@ -1,17 +1,17 @@
-# Trivia-WebIK06
+# Titel website
 
-# Projectvoorstel groep IK06
+## Team IK06
+### Joris Arends 12658650
+### Maarten Blom 12877034
+### Shilpa Kedar 12393053
+
 ## Samenvatting
-Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Het is ook mogelijk om alle categorieën te kiezen voor een extra uitdaging. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
+Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
 
-## Prototype (22-01-2020)
-Gebruiker kan een categorie kiezen en zijn naam invullen, deze worden meegestuurd naar de quizpagina, waarna de quizvragen worden opgehaald. Het is nog niet gelukt om de tijd bij te houden en de vragen in moeilijkheid op te laten lopen. Dit waren geen MVP's maar zouden we graag nog willen implementeren. Wel hebben we de categorieen kiezen en het tonen van een nieuwe vraag zonder refresh weten te implementeren. Ook de scoreboarden per categorie zijn werkend, en zodra iemand zijn score verbeterd dan wordt de oude entry in de database geupdate, hierdoor blijf het aantal dubbele namen beperkt. De shortcut optie voor een play again in dezelfde categorie moet nog worden gemaakt en de username popup form heeft nog wat kleine bugs, net als de klikbare antwoorden. 
+## Applicatie
 ![alt tekst](/doc/index.jpg "Index page")
 ![alt tekst](/doc/quiz.png "Quiz page")
-
-## Schetsen
-
-![alt tekst](/doc/WebsiteDesign.png "Schetsen")
+![alt tekst](/doc/leaderboards.png "Leaderboards page")
 
 ## Features
 ### De gebruiker kan:
@@ -19,26 +19,41 @@ Gebruiker kan een categorie kiezen en zijn naam invullen, deze worden meegestuur
 2. een van de categorieën kiezen;
 3. **vragen beantwoorden totdat een fout antwoord wordt gegeven;**
 4. **de scoreborden per categorie bekijken;**
-5. meer informatie over de website lezen.
-
-### Overig
-1. Vragen lopen op in moeilijkheid;
-2. **Vragen komen uit een online database met goed gereviewde multiple-choice vragen;**
-3. **De website moet er netjes uitzien en goed werken op kleine schermen (met name smartphones);**
-4. Na een correcte vraag wordt de nieuwe vraag getoond zonder de pagina te refreshen;
-5. Er worden geluidseffecten of muziek afgespeeld tijdens het spel.
+5. Vragen lopen op in moeilijkheid;
+6. **Vragen komen uit een online database met goed gereviewde multiple-choice vragen;**
+7. **De website moet er netjes uitzien en goed werken op kleine schermen (met name smartphones);**
+8. Na een correcte vraag wordt de nieuwe vraag getoond zonder de pagina te refreshen;
 
 De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
+
+## Repository
+### mapjes
+* Doc
+    * De schetsen en screenshots van de website
+* Static
+    * Images van de categorieën voor index.html
+    * Quiz.js
+        * Timer
+        * Score
+        * Quizvragen halen uit API
+    * style.css
+        * Stijl voor alle pagina's
+* Templates
+    * Alle html pagina's
+* Application.py
+    * Routes voor alle pagina's
+* helpers.py
+    * Categorieën id van API halen
+    * DB execute functies
 
 ## Afhankelijkheden
 ### Databronnen
 - Trivia database met categorieën: https://opentdb.com/;
-- Categorieën gekozen met > 15 vragen:
 
 ### Externe componenten
 - Bootstrap 4;
 - Flask;
-- SQLAlchemy;
+- SQL;
 - JQuery.
 
 ### Concurrerende website
@@ -46,10 +61,6 @@ De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 - https://www.triviaplaza.com/ (categorieindeling zoals wij die ook willen doen in grid vorm, niet voor mobiel);
 - https://www.jetpunk.com/ (Groot aanbod aan quizzes).
 
-### Moeilijkste delen
-- Timing;
-- Oplopende moeilijkheid van vragen;
-- Live updaten.
 
 
 
