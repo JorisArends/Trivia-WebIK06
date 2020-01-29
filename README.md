@@ -10,11 +10,11 @@ Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de q
 
 ## Applicatie screenshots
 
-<img src="/doc/index.png" alt= "Index page" style= "float: left;" width="425" /> <img src="/doc/quiz.png" alt= "Quiz page"  style= "float: left;" width="425" />
-
+<img src="/doc/index.png" alt= "Index page" width="425" /> <img src="/doc/quiz.png" alt= "Quiz page" width="425" />
+<img src="/doc/game_over.png" alt= "Game_over page" width="425" /> <img src="/doc/leaderboards.png" alt= "Leaderboards page" width="425" />
 
 <!--![alt tekst](/doc/game_over.png "Quiz page") ![alt tekst](/doc/leaderboards.png "Leaderboards page")-->
-
+<!--style= "float: left;"-->
 ## Features
 ### De gebruiker kan:
 1. **een naam invullen;**
