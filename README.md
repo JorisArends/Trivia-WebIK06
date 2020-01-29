@@ -1,9 +1,9 @@
 # Titel website
 
 ## Team IK06
-Joris Arends 12658650
-Maarten Blom 12877034
-Shilpa Kedar 12393053
+* Joris Arends 12658650
+* Maarten Blom 12877034
+* Shilpa Kedar 12393053
 
 ## Samenvatting
 Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
@@ -17,18 +17,18 @@ Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de q
 ## Features
 ### De gebruiker kan:
 1. **een naam invullen;**
-2. een van de categorieën kiezen;
-3. **vragen beantwoorden totdat een fout antwoord wordt gegeven;**
-4. **de scoreborden per categorie bekijken;**
-5. Vragen lopen op in moeilijkheid;
-6. **Vragen komen uit een online database met goed gereviewde multiple-choice vragen;**
-7. **De website moet er netjes uitzien en goed werken op kleine schermen (met name smartphones);**
+2. **vragen beantwoorden totdat een fout antwoord wordt gegeven;**
+3. **de scoreborden per categorie bekijken;**
+4. **Vragen komen uit een online database met goed gereviewde multiple-choice vragen;**
+5. **De website moet er netjes uitzien en goed werken op kleine schermen (met name smartphones);**
+7. Vragen lopen op in moeilijkheid;
+    - De vragen nemen toe in moelijkeid (easy, medium en hard). De gebruiker ziet dit niet, maar de vragen worden wel lastiger, naarmate er meer correcte vragen worden gegeven.
 8. Na een correcte vraag wordt de nieuwe vraag getoond zonder de pagina te refreshen;
 
 De onderdelen die bij het minimum viable product horen zijn **dikgedrukt**.
 
 ## Repository
-### mapjes
+### Mapjes
 * Doc
     * De schetsen en screenshots van de website
 * Static
