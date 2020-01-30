@@ -5,6 +5,8 @@
 * Maarten Blom 12877034
 * Shilpa Kedar 12393053
 
+## Productvideo: https://youtu.be/1zSYwjwAK2M
+
 ## Samenvatting
 Gebruikers kunnen hun naam invoeren en een categorie kiezen en daarna start de quiz. De vragen lopen op in moeilijkheid. Indien er een vraag fout is dan zal de quiz stoppen en wordt het aantal goede vragen en de tijd op het scorebord van de desbetreffende categorie gezet. Er zit een tijdslimiet per vraag aan verbonden. De tijd wordt als tiebreaker gebruikt.
 
