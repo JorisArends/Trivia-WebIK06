@@ -1,0 +1,23 @@
+INDEX
+    laat zien dat bootstrap werkt
+    kies categorie
+    vul geen username in
+    vul een correfcte username in
+
+QUIZ
+    speel quiz
+        klik overal op de div
+    heb vraag fout
+GAME OVER
+    demonstreer play again knop
+QUIZ
+    speel quiz
+    laat tijd uitlopen
+GAME OVER
+    ga naar leaderboard
+    laat zien dat de hoogste van de 2 scores op de leaderboard is geplaatst
+    bekijk leaderboards voor andere categorieen
+        geen categorie geeft error
+    selecteer veschillende grootes van categorieen
+
+Laat alle paginas nog eens zien in mobile view ,features zijn niet belangrijk
